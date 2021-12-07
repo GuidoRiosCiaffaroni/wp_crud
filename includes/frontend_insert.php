@@ -9,18 +9,48 @@ add_shortcode('kfp_ShortCode_Insert_form', 'Kfp_Insert_form');
 function Kfp_Insert_form() 
 {
 
-/*Variables Globales*/
-global $wpdb;
-global $wpbc_db_version;
-global $sistname;
-global $user_id;
-global $status_user;
+    /*Variables Globales*/
+    global $wpdb;
+    global $wpbc_db_version;
+    global $sistname;
+    global $user_id;
+    global $status_user;
+
+    user_role(); // infentifica el rol del usuario
+
+
+    $tabla_aspirantes = $wpdb->prefix . 'secretarydesk'; 
+
+    $user_id                = sanitize_text_field($_POST['user_id']);
+    $nint                   = sanitize_text_field($_POST['nint']);
+    $date                   = sanitize_text_field($_POST['date']);
 
 
 
 
 
-user_role();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -33,6 +63,9 @@ user_role();
 
 
 /* ***************************************************************************************************************************************************** */
+// 
+// $nint = sanitize_text_field($_POST['nint']);
+//
 echo '
         <div class="container d-flex justify-content-center">
             <div class=\'col-md-5\'>
@@ -52,7 +85,6 @@ echo '
             </div>
         </div>
 ';
-
 /* ***************************************************************************************************************************************************** */
 
 
