@@ -15,24 +15,26 @@
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
-// Instalacion del Sistema
+
+// Instalacion del Sistema Base de datos
 require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
+// Formuario de acceso en frontend
+require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert_form.php';
 
 
 
+/*Funciones requeridas para administrar y gestionar */
 
-
-
-/*Funciones requeridas para gestionar archivos */
+// Funciones requeridas para gestionar archivos
 require_once(ABSPATH . "wp-admin" . '/includes/image.php');
 require_once(ABSPATH . "wp-admin" . '/includes/file.php');
 require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-
-/*Funciones requeridas para gestionar la base de datos */
+// Funciones requeridas para gestionar la base de datos
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 
 /*Variables globales*/
+
 global $wpdb;
 
 global $wpbc_db_version;
