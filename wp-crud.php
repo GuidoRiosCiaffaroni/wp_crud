@@ -24,7 +24,8 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
 // Funciones para grafica de Fecha y Hora 
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
-
+// Funciones de seguridad 
+require_once plugin_dir_path( __FILE__ ) . 'includes/security/secure.php';
 
 
 
@@ -51,6 +52,12 @@ $wpbc_db_version = '1.1.0';
 
 global $sistname;
 $sistname = 'crud'; 
+
+global $user_id;
+$user_id = get_current_user_id();
+
+global $status_user;
+
 
 
 /* Instalacion de Base de datos */
