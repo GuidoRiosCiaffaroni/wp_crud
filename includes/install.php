@@ -11,7 +11,10 @@ function wpdb_install()
     // QUERY 
     $sql = "CREATE TABLE " . $table_name . " (
         id int(11) NOT NULL AUTO_INCREMENT,
-        nint VARCHAR (50) NOT NULL, 
+        user_id VARCHAR (100) NOT NULL,
+        key_id VARCHAR (100) NOT NULL,
+        nint VARCHAR (100) NOT NULL,
+        date datetime NOT NULL, 
         dir_archivo_externo VARCHAR (100) NOT NULL,
         create_at datetime NOT NULL DEFAULT NOW(),
         PRIMARY KEY  (id)

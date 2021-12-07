@@ -31,11 +31,11 @@ function Kfp_Insert_form()
    $wpdb->insert(
             $tabla_crud,
             array(
-                'nint'                  => $nint,
+                'user_id' => $user_id,
+                'key_id' => $key_id,
+                'nint'  => $nint,
             )
         );
-
-
 
 
     echo "sistname      ----> " . $sistname     . "</br>";
