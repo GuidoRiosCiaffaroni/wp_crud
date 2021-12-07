@@ -19,38 +19,32 @@ function Kfp_Insert_form()
     user_role(); // infentifica el rol del usuario
 
 
-    $tabla_aspirantes = $wpdb->prefix . 'secretarydesk'; 
+    $tabla_crud = $wpdb->prefix . $sistname; 
 
-    $user_id                = sanitize_text_field($_POST['user_id']);
-    $nint                   = sanitize_text_field($_POST['nint']);
-    $date                   = sanitize_text_field($_POST['date']);
-
-
-
-
+    $user_id        = sanitize_text_field($_POST['user_id']);
+    $key_id         = sanitize_text_field($_POST['key_id']);
+    $nint           = sanitize_text_field($_POST['nint']);
+    $date           = sanitize_text_field($_POST['date']);
+    $customFile     = sanitize_text_field($_POST['customFile']);
 
 
-
-
-
-
-
-
+   $wpdb->insert(
+            $tabla_crud,
+            array(
+                'nint'                  => $nint,
+            )
+        );
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    echo "sistname      ----> " . $sistname     . "</br>";
+    echo "tabla_crud    ----> " . $tabla_crud   . "</br>";
+    echo "user_id       ----> " . $user_id      . "</br>";
+    echo "key_id        ----> " . $key_id       . "</br>";  
+    echo "nint          ----> " . $nint         . "</br>";
+    echo "date          ----> " . $date         . "</br>";
+    echo "customFile    ----> " . $customFile   . "</br>";
 
 
 
@@ -59,6 +53,17 @@ function Kfp_Insert_form()
 
 
 		datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
+
+
+
+/* ***************************************************************************************************************************************************** */
+//
+//
+//
+    echo '<input id="user_id" name="user_id" type="hidden" value="' . get_current_user_id() .'">';;
+    echo '<input id="key_id" name="key_id" type="hidden" value="' . time().'_'.wp_generate_password( 3, false ). '">';
+    echo '<input id="status_id" name="status_id" type="hidden" value="1">';
+/* ***************************************************************************************************************************************************** */
 
 
 
@@ -89,13 +94,17 @@ echo '
 
 
 /* ***************************************************************************************************************************************************** */
+//
+//
+//
 echo '
         <div class="container d-flex justify-content-center">
             <div class=\'col-md-5\'>
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> Fecha </label> 
-                    <div class=\'input-group date\' id=\'datetimepicker7\'> 
-                        <input type=\'text\' class="form-control" placeholder="12/07/2021 12:00 AM"/> 
+                    <!-- <div class=\'input-group date\' id=\'datetimepicker7\'> -->
+                    <div class=\'input-group date\' id=\'datetimepicker7\'>  
+                        <input name="date" id="date" type=\'text\' class="form-control" placeholder="12/07/2021 12:00 AM"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-calendar">
                             </span> 
