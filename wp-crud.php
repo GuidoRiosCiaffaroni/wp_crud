@@ -2,7 +2,7 @@
 /**
 * Plugin Name: WP CRUD
 * Description: Ejemplo Basico 
-* Version:     1.0
+* Version:     1.1
 * Plugin URI: https://guidorios.cl/wp-basic-crud-plugin-wordpress/
 * Author:      Guido Rios Ciaffaroni
 * Author URI:  https://guidorios.cl/
