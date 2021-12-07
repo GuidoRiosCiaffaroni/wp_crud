@@ -15,8 +15,13 @@
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
-// Instalacion del sistema
+// Instalacion del Sistema
 require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
+
+
+
+
+
 
 /*Funciones requeridas para gestionar archivos */
 require_once(ABSPATH . "wp-admin" . '/includes/image.php');
@@ -36,18 +41,9 @@ $wpbc_db_version = '1.1.0';
 global $sistname;
 $sistname = 'crud'; 
 
+
+/* Instalacion de Base de datos */
 wpdb_install();
-
-
-/*
-register_activation_hook(__FILE__, 'wpbc_install');
-add_action('wpbc install', 'wpbc_install');
-*/
-
-
-
-
-
 
 
 ?>
