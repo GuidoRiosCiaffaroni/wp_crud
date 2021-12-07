@@ -34,6 +34,8 @@ function Kfp_Insert_form()
                 'user_id' => $user_id,
                 'key_id' => $key_id,
                 'nint'  => $nint,
+                'date'  => $date,
+
             )
         );
 
