@@ -16,10 +16,16 @@ defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
 
+
+
 // Instalacion del Sistema Base de datos
 require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
 // Formuario de acceso en frontend
-require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert_form.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
+// Funciones para grafica de Fecha y Hora 
+require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
+
+
 
 
 
@@ -31,6 +37,9 @@ require_once(ABSPATH . "wp-admin" . '/includes/file.php');
 require_once(ABSPATH . "wp-admin" . '/includes/media.php');
 // Funciones requeridas para gestionar la base de datos
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+
+
 
 
 /*Variables globales*/
@@ -46,6 +55,13 @@ $sistname = 'crud';
 
 /* Instalacion de Base de datos */
 wpdb_install();
+register_activation_hook(__FILE__, 'wpdb_install');
+
+/**/
+
+/*Inicio crear shortcode en la pagina de inicio */
+add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
+/*Fin crear shortcode enla pagina de inicio*/ 
 
 
 ?>
