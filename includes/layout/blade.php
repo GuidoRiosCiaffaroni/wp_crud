@@ -28,24 +28,12 @@ function fomulario()
         echo "dir_file                  ----> " . $dir_file                         . "</br>";
 */
 
-        
+
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
         wp_nonce_field('graba_aspirante', 'aspirante_nonce');
 
 
         datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
-
-
-
-/* ***************************************************************************************************************************************************** */
-//
-//
-//
-//    echo '<input id="user_id" name="user_id" type="hidden" value="' . get_current_user_id() .'">';;
-//    echo '<input id="key_id" name="key_id" type="hidden" value="' .'_'.wp_generate_password( 12, false ). '">';
-//    echo '<input id="status_id" name="status_id" type="hidden" value="1">';
-/* ***************************************************************************************************************************************************** */
-
 
 
 /* ***************************************************************************************************************************************************** */
