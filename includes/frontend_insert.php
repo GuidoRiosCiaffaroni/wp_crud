@@ -88,10 +88,8 @@ function Kfp_Insert_form()
         echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
         echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
         echo "user_dirname              ----> " . $user_dirname                         . "</br>";
-
-
-
-
+        echo "                          ----> " . $user_dirname                         . "</br>";
+        
 
 
 
