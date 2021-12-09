@@ -24,6 +24,21 @@ function Kfp_Update_form()
   $registros = $wpdb->get_results( "SELECT * FROM wp_crud" );
 
 
+$path = wp_get_upload_dir();
+
+echo $path['path'].'</br>';
+echo $path['url'].'</br>';
+
+/*
+array(6) {
+    ["path"] => string(61) "server/wp-content/uploads/2019/07"
+    ["url"] => string(46) "https://example.com/wp-content/uploads/2019/07"
+    ["subdir"] => string(8) "/2019/07"
+    ["basedir"] => string(53) "server/wp-content/uploads"
+    ["baseurl"] => string(38) "https://example.com/wp-content/uploads"
+    ["error"] => bool(false)
+}
+*/
 
         // nombre de los campos de la tabla
         foreach ($registros as $registros) {
@@ -32,7 +47,7 @@ function Kfp_Update_form()
             <tr>
               <th>'.$registros->nint.'</th>
               <th>'.$registros->date.'</th> 
-              <th><a href="'.'../wp-content/uploads'.$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
+              <th><a href="'.$path['url'].'\\'.date('d').'\\'.$registros->dir_file.'">Descarga</a></th> 
               <th>'.$registros->create_at.'</th>
             </tr>
             ';
