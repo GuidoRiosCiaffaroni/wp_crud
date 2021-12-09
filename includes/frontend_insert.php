@@ -56,7 +56,7 @@ function Kfp_Insert_form()
                 $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/'; // ruta de directorio para linux
                 $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\'; // ruta de directorio para windows
                 $dir_file = $date_time.$_FILES['customFile']['name'];
-                $file_name = $user_dirname.$date_time.'_'.$_FILES['customFile']['name'];
+                $file_name = $user_dirname.$date_time.''.$_FILES['customFile']['name'];
                 rename($customFile['file'] , $file_name); // mueve archivos a carpeta creada 
             }
         }
