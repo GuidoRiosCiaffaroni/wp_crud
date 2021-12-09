@@ -28,17 +28,12 @@ $path = wp_get_upload_dir();
 
 echo $path['path'].'</br>';
 echo $path['url'].'</br>';
+echo $path['subdir'].'</br>';
+echo $path['baseurl'].'</br>';
+echo $path['error'].'</br>';
 
-/*
-array(6) {
-    ["path"] => string(61) "server/wp-content/uploads/2019/07"
-    ["url"] => string(46) "https://example.com/wp-content/uploads/2019/07"
-    ["subdir"] => string(8) "/2019/07"
-    ["basedir"] => string(53) "server/wp-content/uploads"
-    ["baseurl"] => string(38) "https://example.com/wp-content/uploads"
-    ["error"] => bool(false)
-}
-*/
+
+
 
         // nombre de los campos de la tabla
         foreach ($registros as $registros) {
