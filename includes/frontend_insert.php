@@ -22,11 +22,13 @@ function Kfp_Insert_form()
     $tabla_crud = $wpdb->prefix . $sistname; 
 
     $user_id        = sanitize_text_field($_POST['user_id']);
-    $key_id         = sanitize_text_field($_POST['key_id']);
+    $key_id         = wp_generate_password( 12, false );
     $nint           = sanitize_text_field($_POST['nint']);
     $date           = sanitize_text_field($_POST['date']);
     $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
-    
+    $status_id      = sanitize_text_field($_POST['status_id']);
+
+
 
     if (get_current_user_id() != NULL ) 
     {
@@ -69,6 +71,7 @@ function Kfp_Insert_form()
                 'nint'  => $nint,
                 'date'  => $date,
                 'dir_file'  => $dir_file,
+                'status_id' => $status_id,
 
             )
         );
