@@ -25,9 +25,7 @@ function Kfp_Insert_form()
     $key_id         = sanitize_text_field($_POST['key_id']);
     $nint           = sanitize_text_field($_POST['nint']);
     $date           = sanitize_text_field($_POST['date']);
-    //$customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
-    $customFile     = $file;
-
+    $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
     
 
     if (get_current_user_id() != NULL ) 
@@ -48,8 +46,9 @@ function Kfp_Insert_form()
 
             if ($_FILES['customFile']['name'] != NULL)
             {
-                $file = $file = date('Y').'/'.date('m').'/'.date('d').'/'.time().'_'.$_FILES['wp_custom_attachment']['name']; 
-                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a")."_"; 
+                //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("H_i_s_a")."_"; 
+                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("Y-m-d-h_i_s_a",time())."_";
+                $dir_file = '/'.date('Y').'/'.date('m').'/'.date('d').'/'.$date_time.'_'.$_FILES['customFile']['name'];
                 rename($customFile['file'] , $user_dirname.$date_time.'_'.$_FILES['customFile']['name']); 
             }
 
@@ -69,6 +68,7 @@ function Kfp_Insert_form()
                 'key_id' => $key_id,
                 'nint'  => $nint,
                 'date'  => $date,
+                'dir_file'  => $dir_file,
 
             )
         );
@@ -91,8 +91,7 @@ function Kfp_Insert_form()
         echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
         echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
         echo "user_dirname              ----> " . $user_dirname                         . "</br>";
-        echo "                          ----> " . $user_dirname                         . "</br>";
-        
+        echo "dir_file                  ----> " . $dir_file                         . "</br>";
 
 
 
@@ -111,7 +110,7 @@ function Kfp_Insert_form()
 //
 //
     echo '<input id="user_id" name="user_id" type="hidden" value="' . get_current_user_id() .'">';;
-    echo '<input id="key_id" name="key_id" type="hidden" value="' . time().'_'.wp_generate_password( 3, false ). '">';
+    echo '<input id="key_id" name="key_id" type="hidden" value="' .'_'.wp_generate_password( 12, false ). '">';
     echo '<input id="status_id" name="status_id" type="hidden" value="1">';
 /* ***************************************************************************************************************************************************** */
 
