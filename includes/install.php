@@ -15,7 +15,7 @@ function wpdb_install()
         key_id VARCHAR (100) NOT NULL,
         nint VARCHAR (100) NOT NULL,
         date VARCHAR (100) NOT NULL, 
-        dir_archivo_externo VARCHAR (100) NOT NULL,
+        dir_file VARCHAR (100) NOT NULL,
         create_at datetime NOT NULL DEFAULT NOW(),
         PRIMARY KEY  (id)
     );";

@@ -25,7 +25,9 @@ function Kfp_Insert_form()
     $key_id         = sanitize_text_field($_POST['key_id']);
     $nint           = sanitize_text_field($_POST['nint']);
     $date           = sanitize_text_field($_POST['date']);
-    $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
+    //$customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
+    $customFile     = $file;
+
     
 
     if (get_current_user_id() != NULL ) 
@@ -46,7 +48,8 @@ function Kfp_Insert_form()
 
             if ($_FILES['customFile']['name'] != NULL)
             {
-               $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a")."_"; 
+                $file = $file = date('Y').'/'.date('m').'/'.date('d').'/'.time().'_'.$_FILES['wp_custom_attachment']['name']; 
+                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a")."_"; 
                 rename($customFile['file'] , $user_dirname.$date_time.'_'.$_FILES['customFile']['name']); 
             }
 
