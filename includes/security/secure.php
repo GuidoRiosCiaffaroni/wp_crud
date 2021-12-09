@@ -11,8 +11,8 @@ function user_role()
 
 			$user = wp_get_current_user(); // getting & setting the current user 
 	 		$roles = ( array ) $user->roles; // obtaining the role 
-	 		echo $roles[0] . '</br>';
-       
+	 		
+      
 
 
         }
@@ -20,10 +20,9 @@ function user_role()
         {
         	echo "<p class='exito'><b>Usuario no validado</b>.<p>";
             $statususer = 0;
-
         }
 
-  
+
 
 
 

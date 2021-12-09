@@ -16,7 +16,7 @@ function Kfp_Insert_form()
     global $user_id;
     global $status_user;
 
-    user_role(); // infentifica el rol del usuario
+    
 
 
     $tabla_crud = $wpdb->prefix . $sistname; 
@@ -25,7 +25,38 @@ function Kfp_Insert_form()
     $key_id         = sanitize_text_field($_POST['key_id']);
     $nint           = sanitize_text_field($_POST['nint']);
     $date           = sanitize_text_field($_POST['date']);
-    $customFile     = sanitize_text_field($_POST['customFile']);
+    $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name']));
+    
+
+    if (get_current_user_id() != NULL ) 
+    {
+
+        $current_user = wp_get_current_user();
+        $upload_dir   = wp_upload_dir();
+
+        if ( isset( $current_user->user_login ) && ! empty( $upload_dir['basedir'] ) ) 
+        {
+            $user_dirname = $upload_dir['basedir'].'/'.date('Y').'/'.date('m').'/'.date('d').'/';
+            if ( ! file_exists( $user_dirname ) ) 
+            {
+                wp_mkdir_p( $user_dirname );
+
+ 
+            }
+
+            if ($_FILES['customFile']['name'] != NULL)
+            {
+               $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a")."_"; 
+                rename($customFile['file'] , $user_dirname.$date_time.'_'.$_FILES['customFile']['name']); 
+            }
+
+
+
+        }
+
+
+
+    }
 
 
    $wpdb->insert(
@@ -40,13 +71,29 @@ function Kfp_Insert_form()
         );
 
 
-    echo "sistname      ----> " . $sistname     . "</br>";
-    echo "tabla_crud    ----> " . $tabla_crud   . "</br>";
-    echo "user_id       ----> " . $user_id      . "</br>";
-    echo "key_id        ----> " . $key_id       . "</br>";  
-    echo "nint          ----> " . $nint         . "</br>";
-    echo "date          ----> " . $date         . "</br>";
-    echo "customFile    ----> " . $customFile   . "</br>";
+
+    user_role(); // infentifica el rol del usuario
+
+
+        echo "role                      ----> " . $roles[0]                             . "</br>";
+        echo "sistname                  ----> " . $sistname                             . "</br>";
+        echo "tabla_crud                ----> " . $tabla_crud                           . "</br>";
+        echo "user_id                   ----> " . $user_id                              . "</br>";
+        echo "key_id                    ----> " . $key_id                               . "</br>";  
+        echo "nint                      ----> " . $nint                                 . "</br>";
+        echo "date                      ----> " . $date                                 . "</br>";
+        echo "customFile                ----> " . $customFile                           . "</br>";
+        echo "current_user              ----> " . sanitize_text_field($current_user)    . "</br>";
+        echo "upload_dir                ----> " . $upload_dir                           . "</br>";
+        echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
+        echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
+        echo "user_dirname              ----> " . $user_dirname                         . "</br>";
+
+
+
+
+
+
 
 
 
@@ -131,7 +178,7 @@ echo '
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> Archivo  </label> 
                     <div class=\'input-group\' id="customFile"> 
-                        <input type="file" class="form-control" id="customFile"> 
+                        <input type="file" class="form-control" id="customFile" name="customFile"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-open-file">
                             </span> 
