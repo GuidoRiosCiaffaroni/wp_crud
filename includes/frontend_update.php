@@ -6,7 +6,7 @@ add_shortcode('kfp_ShotCondeBuscar_form', 'Kfp_Buscar_form');
 
 /*Inicio funcion para crear shortcode en la pagina de inicio */
 
-function Kfp_Buscar_form() 
+function Kfp_Update_form() 
 {
   global $wpdb;
   $registros = $wpdb->get_results( "SELECT * FROM wp_secretarydesk" );
