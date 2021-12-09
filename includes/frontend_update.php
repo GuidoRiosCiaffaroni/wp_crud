@@ -1,15 +1,27 @@
 <?php
 
 /*Inicio crear shortcode en la pagina de inicio */
-add_shortcode('kfp_ShotCondeBuscar_form', 'Kfp_Buscar_form');
+add_shortcode('kfp_ShortCode_Update_form', 'Kfp_Update_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
 /*Inicio funcion para crear shortcode en la pagina de inicio */
 
 function Kfp_Update_form() 
 {
-  global $wpdb;
-  $registros = $wpdb->get_results( "SELECT * FROM wp_secretarydesk" );
+    /*Variables Globales*/
+    global $wpdb;
+    global $wpbc_db_version;
+    global $sistname;
+    global $user_id;
+    global $status_user;
+    global $user_dirname;
+    global $upload_dir;
+    global $dir_file;
+    global $file_name;  
+
+
+
+  $registros = $wpdb->get_results( "SELECT * FROM wp_crud" );
 
 
 
@@ -18,8 +30,10 @@ function Kfp_Update_form()
             $result .= 
             '
             <tr>
-                <td>'.$registros->id.'</td>
-                <td>'.$registros->nint.'</td>
+              <th>'.$registros->nint.'</th>
+              <th>'.$registros->date.'</th> 
+              <th><a href="'.'../wp-content/uploads'.$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
+              <th>'.$registros->create_at.'</th>
             </tr>
             ';
         }
@@ -28,8 +42,10 @@ function Kfp_Update_form()
 
         $template = '<table class="table-data">
                       <tr>
-                        <th>ID</th>
-                        <th>nint</th>
+                        <th>nint </th>
+                        <th>date </th> 
+                        <th>dir_file </th> 
+                        <th>create_at </th>
                       </tr>
                       {data}
                     </table>';

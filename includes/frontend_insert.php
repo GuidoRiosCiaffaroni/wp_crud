@@ -15,6 +15,10 @@ function Kfp_Insert_form()
     global $sistname;
     global $user_id;
     global $status_user;
+    global $user_dirname;
+    global $upload_dir;
+    global $dir_file;
+    global $file_name;  
 
 
     $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
@@ -38,6 +42,7 @@ function Kfp_Insert_form()
         if ( isset( $current_user->user_login ) && ! empty( $upload_dir['basedir'] ) ) 
         {
             $user_dirname = $upload_dir['basedir'].'/'.date('Y').'/'.date('m').'/'.date('d').'/'; // Ruta de directorios donde se almacenara archivos
+
             if ( ! file_exists( $user_dirname ) ) 
             {
                 wp_mkdir_p( $user_dirname ); // Crear directorios para almacenar archivos 
@@ -46,11 +51,13 @@ function Kfp_Insert_form()
             if ($_FILES['customFile']['name'] != NULL)
             {
                 //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("H_i_s_a")."_"; 
-                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("Y-m-d-h_i_s_a",time())."_";
+                //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("Y-m-d-h_i_s_a",time())."_";
+                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a",time())."_";
                 $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/'; // ruta de directorio para linux
                 $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\'; // ruta de directorio para windows
-                $dir_file = $_FILES['customFile']['name'];
-                rename($customFile['file'] , $user_dirname.$date_time.'_'.$_FILES['customFile']['name']); // mueve archivos a carpeta creada 
+                $dir_file = $date_time.$_FILES['customFile']['name'];
+                $file_name = $user_dirname.$date_time.'_'.$_FILES['customFile']['name'];
+                rename($customFile['file'] , $file_name); // mueve archivos a carpeta creada 
             }
         }
     }
@@ -74,6 +81,23 @@ function Kfp_Insert_form()
         );
 
 
+
+
+
+        echo "role                      ----> " . $roles[0]                             . "</br>";
+        echo "sistname                  ----> " . $sistname                             . "</br>";
+        echo "tabla_crud                ----> " . $tabla_crud                           . "</br>";
+        echo "user_id                   ----> " . $user_id                              . "</br>";
+        echo "key_id                    ----> " . $key_id                               . "</br>";  
+        echo "nint                      ----> " . $nint                                 . "</br>";
+        echo "date                      ----> " . $date                                 . "</br>";
+        echo "customFile                ----> " . $customFile                           . "</br>";
+        echo "current_user              ----> " . sanitize_text_field($current_user)    . "</br>";
+        echo "upload_dir                ----> " . $upload_dir                           . "</br>";
+        echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
+        echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
+        echo "user_dirname              ----> " . $user_dirname                         . "</br>";
+        echo "dir_file                  ----> " . $dir_file                         . "</br>";
 
 
 

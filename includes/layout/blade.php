@@ -2,12 +2,18 @@
 function fomulario()
 {
 
-   /*Variables Globales*/
+    /*Variables Globales*/
     global $wpdb;
     global $wpbc_db_version;
     global $sistname;
     global $user_id;
     global $status_user;
+    global $user_dirname;
+    global $upload_dir;
+    global $dir_file;
+    global $file_name;  
+ 
+
 
 /*
     user_role(); // infentifica el rol del usuario

@@ -20,6 +20,8 @@ defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
 // Formuario de acceso en frontend
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
+// Formuario de acceso en frontend
+require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_update.php';
 // Funciones para grafica de Fecha y Hora 
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
 // Funciones de seguridad 
@@ -51,7 +53,13 @@ $sistname = 'crud';
 global $user_id;
 $user_id = get_current_user_id();
 
-global $status_user;
+    global $status_user;
+     global $user_dirname;
+    global $upload_dir;
+    global $dir_file;
+    global $file_name;  
+
+
 
 /* Instalacion de Base de datos */
 wpdb_install();
