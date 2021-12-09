@@ -2,7 +2,7 @@
 /**
 * Plugin Name: WP CRUD
 * Description: Ejemplo Basico 
-* Version:     1.1
+* Version:     1.2
 * Plugin URI: https://guidorios.cl/wp-basic-crud-plugin-wordpress/
 * Author:      Guido Rios Ciaffaroni
 * Author URI:  https://guidorios.cl/
@@ -24,6 +24,11 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
 // Funciones de seguridad 
 require_once plugin_dir_path( __FILE__ ) . 'includes/security/secure.php';
+
+// Funciones para la generacion de Blade 
+require_once plugin_dir_path( __FILE__ ) . 'includes/layout/blade.php';
+
+
 
 /*Funciones requeridas para administrar y gestionar */
 
