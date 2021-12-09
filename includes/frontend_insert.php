@@ -43,7 +43,10 @@ function Kfp_Insert_form()
             {
                 //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("H_i_s_a")."_"; 
                 $date_time = date('Y')."_".date('m')."_".date('d')."_".date("Y-m-d-h_i_s_a",time())."_";
-                $dir_file = '/'.date('Y').'/'.date('m').'/'.date('d').'/'.$date_time.'_'.$_FILES['customFile']['name'];
+
+                $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/';
+                $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\';
+                $dir_file = $_FILES['customFile']['name'];
                 rename($customFile['file'] , $user_dirname.$date_time.'_'.$_FILES['customFile']['name']); 
             }
         }
@@ -57,6 +60,8 @@ function Kfp_Insert_form()
                 'key_id' => $key_id,
                 'nint'  => $nint,
                 'date'  => $date,
+                'dir_file_linux'  => $dir_file_linux,
+                'dir_file_win'  => $dir_file_win,
                 'dir_file'  => $dir_file,
                 'status_id' => $status_id,
             )
