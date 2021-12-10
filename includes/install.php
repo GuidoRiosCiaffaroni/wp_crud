@@ -21,9 +21,11 @@ global $file_name;
         key_id VARCHAR (100) NOT NULL,
         nint VARCHAR (100) NOT NULL, -- codigo de depatamento 
         nint_second VARCHAR (100) NOT NULL, -- numero de folio propio
+        nint_third VARCHAR (100) NOT NULL, -- numero de folio 
         descipction VARCHAR (100) NOT NULL, -- descipction
         doc_type int(11) NOT NULL, -- tipo de documento
         date VARCHAR (100) NOT NULL, -- fecha
+        
         dir_file_linux VARCHAR (100) NOT NULL,
         dir_file_win VARCHAR (100) NOT NULL,
         dir_file VARCHAR (100) NOT NULL,
