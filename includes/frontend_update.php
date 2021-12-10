@@ -24,16 +24,17 @@ function Kfp_Update_form()
   $registros = $wpdb->get_results( "SELECT * FROM wp_crud" );
 
 
-$path = wp_get_upload_dir();
+$path_uploads = wp_get_upload_dir();
 
-echo $path['path'].'</br>';
-echo $path['url'].'</br>';
-echo $path['subdir'].'</br>';
-echo $path['baseurl'].'</br>';
-echo $path['error'].'</br>';
+echo $path_uploads['path'].'</br>';
+echo $path_uploads['url'].'</br>';
+echo $path_uploads['subdir'].'</br>';
+echo $path_uploads['baseurl'].'</br>';
+echo $path_uploads['error'].'</br>';
 
 
-
+$path_plugins = plugins_url();
+echo $path_plugins;
 
         // nombre de los campos de la tabla
         foreach ($registros as $registros) {
@@ -42,8 +43,10 @@ echo $path['error'].'</br>';
             <tr>
               <th>'.$registros->nint.'</th>
               <th>'.$registros->date.'</th> 
-              <th><a href="'.$path['url'].'\\'.date('d').'\\'.$registros->dir_file.'">Descarga</a></th> 
-              <th>'.$registros->create_at.'</th>
+              <th><a href="">Descarga</a></th> 
+              <th><a href="">Detalle</a></th> 
+              <th><a href="">Borrar</a></th>
+              <th><a href="">Actualizar</a></th>  
             </tr>
             ';
         }
@@ -55,7 +58,9 @@ echo $path['error'].'</br>';
                         <th>nint </th>
                         <th>date </th> 
                         <th>dir_file </th> 
-                        <th>create_at </th>
+                        <th>detalle </th>
+                        <th>Borrar </th>
+                        <th>Actalizar </th>
                       </tr>
                       {data}
                     </table>';
@@ -63,8 +68,16 @@ echo $path['error'].'</br>';
         return $content.str_replace('{data}', $result, $template);
 
 
+
+
+        echo '</br>';
+
+
+
+
   }
 // Ejecutamos nuestro funcion en WordPress
 //add_action('wp', 'leer_wpdb');
 
 ?>
+
