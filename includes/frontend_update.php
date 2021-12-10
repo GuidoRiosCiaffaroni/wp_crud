@@ -49,7 +49,7 @@ echo $path_plugins;
               <th>'.$registros->date.'</th> 
               <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
               <th><a href="">Detalle</a></th> 
-              <th><a href="">Borrar</a></th>
+              <th><a href="http://localhost/wordpress/delete/?variable1='.$registros->id.'&variable2=valor2">Borrar</a></th>
               <th><a href="">Actualizar</a></th>  
             </tr>
             ';
