@@ -22,8 +22,11 @@ function Kfp_Update_form()
 
 
 
-  $registros = $wpdb->get_results( "SELECT * FROM wp_crud" );
+$query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
 
+
+
+$registros = $wpdb->get_results($query);
 
 $path_uploads = wp_get_upload_dir();
 
