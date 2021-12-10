@@ -44,7 +44,7 @@ echo $path_plugins;
             <tr>
               <th>'.$registros->nint.'</th>
               <th>'.$registros->date.'</th> 
-              <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.'">Descarga</a></th> 
+              <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
               <th><a href="">Detalle</a></th> 
               <th><a href="">Borrar</a></th>
               <th><a href="">Actualizar</a></th>  
