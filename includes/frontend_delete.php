@@ -9,43 +9,40 @@ add_shortcode('kfp_ShortCode_Delete_form', 'Kfp_Delete_form');
 function Kfp_Delete_form() 
 {
 
-    /*Variables Globales*/
-    global $wpdb;
-    global $wpbc_db_version;
-    global $sistname;
-    global $user_id;
-    global $status_user;
-    global $user_dirname;
-    global $upload_dir;
-    global $dir_file;
-    global $file_name;  
+/*Variables globales*/
+global $wpdb;
+global $wpbc_db_version;
+global $sistname;
+global $user_id;
+global $status_user;
+global $user_dirname;
+global $upload_dir;
+global $dir_file;
+global $file_name;   
 
 
-    $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
+$id      = sanitize_text_field($_GET['id']);
+$key_id  = sanitize_text_field($_GET['key_id']);
 
-    $id      = sanitize_text_field($_GET['id']);
-    $key_id  = sanitize_text_field($_GET['key_id']);
+$query = 'SELECT * FROM wp_crud WHERE id = '.$id;
+$registros = $wpdb->get_results($query);
 
-
-    $query = 'SELECT * FROM wp_crud WHERE id = '.$id;
-    $registros = $wpdb->get_results($query);
-
-
-    // nombre de los campos de la tabla
-    foreach ($registros as $registros) 
-    {
-            $id = $registros->id;
-            $user_id = $registros->user_id; 
-            $key_id = $registros->key_id; 
-            $nint = $registros->nint;
-            $date = $registros->date;
-            $dir_file_linux = $registros->dir_file_linux;
-            $dir_file_win = $registros->dir_file_win;
-            $dir_file = $registros->dir_file;
-            $status_id = $registros->status_id;
-            $create_at = $registros->create_at;  
-    }
+// nombre de los campos de la tabla
+foreach ($registros as $registros) 
+{
+    $id = $registros->id;
+    $user_id = $registros->user_id; 
+    $key_id = $registros->key_id; 
+    $nint = $registros->nint;
+    $date = $registros->date;
+    $dir_file_linux = $registros->dir_file_linux;
+    $dir_file_win = $registros->dir_file_win;
+    $dir_file = $registros->dir_file;
+    $status_id = $registros->status_id;
+    $create_at = $registros->create_at;  
+}
 
 
     $wpdb->update( 'wp_crud', 
@@ -72,12 +69,7 @@ function Kfp_Delete_form()
             )
         );
 
-
-
-
-
-
-// header("Location: http://localhost/wordpress/insert/");
+        // header("Location: http://localhost/wordpress/insert/");
 
 }
 

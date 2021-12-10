@@ -50,8 +50,6 @@ function Kfp_Insert_form()
 
             if ($_FILES['customFile']['name'] != NULL)
             {
-                //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("H_i_s_a")."_"; 
-                //$date_time = date('Y')."_".date('m')."_".date('d')."_".date("Y-m-d-h_i_s_a",time())."_";
                 $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a",time())."_";
                 $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/'; // ruta de directorio para linux
                 $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\'; // ruta de directorio para windows
@@ -81,23 +79,6 @@ function Kfp_Insert_form()
         );
 
 
-
-
-
-        echo "role                      ----> " . $roles[0]                             . "</br>";
-        echo "sistname                  ----> " . $sistname                             . "</br>";
-        echo "tabla_crud                ----> " . $tabla_crud                           . "</br>";
-        echo "user_id                   ----> " . $user_id                              . "</br>";
-        echo "key_id                    ----> " . $key_id                               . "</br>";  
-        echo "nint                      ----> " . $nint                                 . "</br>";
-        echo "date                      ----> " . $date                                 . "</br>";
-        echo "customFile                ----> " . $customFile                           . "</br>";
-        echo "current_user              ----> " . sanitize_text_field($current_user)    . "</br>";
-        echo "upload_dir                ----> " . $upload_dir                           . "</br>";
-        echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
-        echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
-        echo "user_dirname              ----> " . $user_dirname                         . "</br>";
-        echo "dir_file                  ----> " . $dir_file                         . "</br>";
 
 
 

@@ -9,38 +9,30 @@ add_shortcode('kfp_ShortCode_Update_form', 'Kfp_Update_form');
 function Kfp_Update_form() 
 {
 
-    /*Variables Globales*/
-    global $wpdb;
-    global $wpbc_db_version;
-    global $sistname;
-    global $user_id;
-    global $status_user;
-    global $user_dirname;
-    global $upload_dir;
-    global $dir_file;
-    global $file_name;  
-
+/*Variables globales*/
+global $wpdb;
+global $wpbc_db_version;
+global $sistname;
+global $user_id;
+global $status_user;
+global $user_dirname;
+global $upload_dir;
+global $dir_file;
+global $file_name;  
 
 
 $query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
-
-
-
 $registros = $wpdb->get_results($query);
-
-
-
-
 
 $path_uploads = wp_get_upload_dir();
 
-
+/*
 echo $path_uploads['path'].'</br>';
 echo $path_uploads['url'].'</br>';
 echo $path_uploads['subdir'].'</br>';
 echo $path_uploads['baseurl'].'</br>';
 echo $path_uploads['error'].'</br>';
-
+*/
 
 $path_plugins = plugins_url();
 echo $path_plugins;
