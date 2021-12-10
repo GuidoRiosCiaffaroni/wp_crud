@@ -78,6 +78,6 @@ echo $path_plugins;
   }
 // Ejecutamos nuestro funcion en WordPress
 //add_action('wp', 'leer_wpdb');
-
+//https://mdbootstrap.com/docs/b4/jquery/tables/pagination/#docsTabsOverview
 ?>
 
