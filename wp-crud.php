@@ -53,12 +53,11 @@ $sistname = 'crud';
 global $user_id;
 $user_id = get_current_user_id();
 
-    global $status_user;
-     global $user_dirname;
-    global $upload_dir;
-    global $dir_file;
-    global $file_name;  
-
+global $status_user;
+global $user_dirname;
+global $upload_dir;
+global $dir_file;
+global $file_name;  
 
 
 /* Instalacion de Base de datos */

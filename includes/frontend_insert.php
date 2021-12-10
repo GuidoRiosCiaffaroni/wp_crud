@@ -4,7 +4,7 @@
 add_shortcode('kfp_ShortCode_Insert_form', 'Kfp_Insert_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
-
+/*Inicio funcion para crear shortcode en la pagina de inicio */
 
 function Kfp_Insert_form() 
 {
