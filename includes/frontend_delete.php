@@ -27,7 +27,7 @@ $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']);
 $key_id  = sanitize_text_field($_GET['key_id']);
 
-$query = 'SELECT * FROM wp_crud WHERE id = '.$id;
+$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
 $registros = $wpdb->get_results($query);
 
 // nombre de los campos de la tabla
