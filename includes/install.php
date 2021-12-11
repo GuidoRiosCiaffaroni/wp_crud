@@ -1,16 +1,10 @@
 <?php
 function wpdb_install()
 {
-/*Variables globales*/
-global $wpdb;
-global $wpbc_db_version;
-global $sistname;
-global $user_id;
-global $status_user;
-global $user_dirname;
-global $upload_dir;
-global $dir_file;
-global $file_name;  
+    // Variables Globales 
+    global $wpdb;
+    global $sistname;
+    global $wpbc_db_version;
 
     $table_name = $wpdb->prefix . $sistname; 
 
@@ -19,21 +13,14 @@ global $file_name;
         id int(11) NOT NULL AUTO_INCREMENT,
         user_id VARCHAR (100) NOT NULL,
         key_id VARCHAR (100) NOT NULL,
-        nint VARCHAR (100) NOT NULL, -- codigo de depatamento 
-        nint_second VARCHAR (100) NOT NULL, -- numero de folio propio
-        nint_third VARCHAR (100) NOT NULL, -- numero de folio 
-        descipction VARCHAR (100) NOT NULL, -- descipction
-        doc_type int(11) NOT NULL, -- tipo de documento
-        date VARCHAR (100) NOT NULL, -- fecha
-        
+        nint VARCHAR (100) NOT NULL,
+        date VARCHAR (100) NOT NULL, 
         dir_file_linux VARCHAR (100) NOT NULL,
         dir_file_win VARCHAR (100) NOT NULL,
-        dir_file VARCHAR (100) NOT NULL,
-        depart_id int(11) NOT NULL, -- Crear tabla 
+        dir_file VARCHAR (100) NOT NULL, 
         status_id VARCHAR (100) NOT NULL,
         create_at datetime NOT NULL DEFAULT NOW(),
-        PRIMARY KEY  (id),
-
+        PRIMARY KEY  (id)
     );";
 
     // Ejecucion de la QUERY
