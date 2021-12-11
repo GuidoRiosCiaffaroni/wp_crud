@@ -44,22 +44,23 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 /*Variables globales*/
 
-global $wpdb;
-
-global $wpbc_db_version;
-$wpbc_db_version = '1.1.0'; 
-
-global $sistname;
-$sistname = 'crud'; 
-
-global $user_id;
-$user_id = get_current_user_id();
-
-global $status_user;
+global $wpdb; 				// datos del sistema
+global $wpbc_db_version; 	// Version del base de datos - utilizado para las actualizaciones
+global $sistname;			// nombre de la tabla de sistema
+global $user_id;			// ID del usuario
+global $status_user;		// Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;
+global $dir_file;			// Nombre de archivo a subir
 global $file_name;  
+
+$wpbc_db_version = '1.1.0'; 
+$sistname = 'crud'; 
+$user_id = get_current_user_id();
+
+
+
+
 
 
 /* Instalacion de Base de datos */
