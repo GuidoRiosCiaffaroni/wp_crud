@@ -24,6 +24,11 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_update.php';
 // Formuario de acceso en frontend
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_delete.php';
+// Formuario de acceso en frontend
+require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_edit.php';
+
+
+
 // Funciones para grafica de Fecha y Hora 
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
 // Funciones de seguridad 

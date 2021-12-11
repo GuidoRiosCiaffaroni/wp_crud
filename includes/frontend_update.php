@@ -48,7 +48,7 @@ echo $path_plugins;
               <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
               <th><a href="">Detalle</a></th> 
               <th><a href="http://localhost/wordpress/delete/?id='.$registros->id.'&key_id='.$registros->key_id.'">Borrar</a></th>
-              <th><a href="">Actualizar</a></th>  
+              <th><a href="http://localhost/wordpress/edit/?id='.$registros->id.'&key_id='.$registros->key_id.'">Actualizar</a></th>  
             </tr>
             ';
         }

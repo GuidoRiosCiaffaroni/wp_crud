@@ -1,12 +1,12 @@
 <?php
 
 /*Inicio crear shortcode en la pagina de inicio */
-add_shortcode('kfp_ShortCode_Delete_form', 'Kfp_Delete_form');
+add_shortcode('kfp_ShortCode_Edit_form', 'Kfp_Edit_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
 /*Inicio funcion para crear shortcode en la pagina de inicio */
 
-function Kfp_Delete_form() 
+function Kfp_Edit_form() 
 {
 
 /*Variables globales*/
@@ -45,33 +45,20 @@ foreach ($registros as $registros)
     $create_at = $registros->create_at;  
 }
 
-
-    $wpdb->update( 'wp_crud', 
-        // Datos que se remplazarán
-        array( 
-            'status_id' => '0'
-            ),
-            // Cuando el ID del campo es igual al número $key_id
-            array( 'key_id' => $key_id )
-        );
-
-
-    $wpdb->insert(
-            $tabla_crud,
-            array(
-                'user_id' => $user_id,
-                'key_id' => $key_id,
-                'nint'  => $nint,
-                'date'  => $date,
-                'dir_file_linux'  => $dir_file_linux,
-                'dir_file_win'  => $dir_file_win,
-                'dir_file'  => $dir_file,
-                'status_id' => 0,
-            )
-        );
-
-        // header("Location: http://localhost/wordpress/insert/");
+$wpdb->insert(
+  $tabla_crud,
+    array(
+      'user_id'         => $user_id,
+      'key_id'          => $key_id,
+      'nint'            => $nint,
+      'date'            => $date,
+      'dir_file_linux'  => $dir_file_linux,
+      'dir_file_win'    => $dir_file_win,
+      'dir_file'        => $dir_file,
+      'status_id'       => 1,
+    )
+);
 
 }
-
 ?>
+
