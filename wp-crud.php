@@ -43,10 +43,18 @@ require_once(ABSPATH . "wp-admin" . '/includes/media.php');
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 /*Variables globales*/
+
 global $wpdb;
+
 global $wpbc_db_version;
+$wpbc_db_version = '1.1.0'; 
+
 global $sistname;
+$sistname = 'crud'; 
+
 global $user_id;
+$user_id = get_current_user_id();
+
 global $status_user;
 global $user_dirname;
 global $upload_dir;
@@ -54,17 +62,13 @@ global $dir_file;
 global $file_name;  
 
 
-$wpbc_db_version = '1.1.0'; 
-$sistname = 'crud'; 
-$user_id = get_current_user_id();
-
 /* Instalacion de Base de datos */
 wpdb_install();
 register_activation_hook(__FILE__, 'wpdb_install');
 
 
 /*Inicio crear shortcode en la pagina de inicio */
-//add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
+add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
 
