@@ -12,6 +12,13 @@
 * Domain Path: /languages
 */
 
+/******************************************************************************************/
+// Archivo : wp-crud
+// Funcion : 
+
+/******************************************************************************************/
+
+
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
@@ -66,7 +73,7 @@ register_activation_hook(__FILE__, 'wpdb_install');
 
 
 /*Inicio crear shortcode en la pagina de inicio */
-add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
+//add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
 

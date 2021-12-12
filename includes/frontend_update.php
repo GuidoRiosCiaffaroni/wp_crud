@@ -1,4 +1,11 @@
 <?php
+/******************************************************************************************/
+// Archivo : frontend_update.php
+// Funcion : Kfp_Update_form() 'funcion para listado de datos'
+// Objetos : $wpdb->get_results($query)
+
+/******************************************************************************************/
+
 
 /*Inicio crear shortcode en la pagina de inicio */
 add_shortcode('kfp_ShortCode_Update_form', 'Kfp_Update_form');
@@ -9,35 +16,24 @@ add_shortcode('kfp_ShortCode_Update_form', 'Kfp_Update_form');
 function Kfp_Update_form() 
 {
 
-/*Variables globales*/
+  /*Variables globales*/
 
-global $wpdb;             // datos del sistema
+global $wpdb;         // datos del sistema
 global $wpbc_db_version;  // Version del base de datos - utilizado para las actualizaciones
-global $sistname;         // nombre de la tabla de sistema
-global $user_id;          // ID del usuario
-global $status_user;      // Perfil del usuario 
+global $sistname;     // nombre de la tabla de sistema
+global $user_id;      // ID del usuario
+global $status_user;    // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;         // Nombre de archivo a subir
+global $dir_file;     // Nombre de archivo a subir
 global $file_name;  
 
 
 $query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
 $registros = $wpdb->get_results($query);
-
 $path_uploads = wp_get_upload_dir();
-
-
-echo $path_uploads['path'].'</br>';
-echo $path_uploads['url'].'</br>';
-echo $path_uploads['subdir'].'</br>';
-echo $path_uploads['baseurl'].'</br>';
-echo $path_uploads['error'].'</br>';
-echo get_site_url().'</br>';
-
-
 $path_plugins = plugins_url();
-echo $path_plugins;
+
 
         // nombre de los campos de la tabla
         foreach ($registros as $registros) {
