@@ -1,4 +1,11 @@
 <?php
+/******************************************************************************************/
+// Archivo : frontend_edit.php
+// Funcion : Kfp_Edit_form() 'Edita los datos'
+// Objetos : $wpdb->get_results($query)
+
+/******************************************************************************************/
+
 
 /*Inicio crear shortcode en la pagina de inicio */
 add_shortcode('kfp_ShortCode_Edit_form', 'Kfp_Edit_form');
@@ -69,129 +76,28 @@ $wpdb->update( $tabla_crud,
 );
 
 
+//$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
+//$registros = $wpdb->get_results($query);
 
 
+//SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id='4cJqU79Em8ZQ'
+$query2 = 'SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id=''
 
+$registros2 = $wpdb->get_results($query2);
+foreach ($registros2 as $registros2)
+{
+    $id2 = $registros2->id;
+    
+}
+echo '----------------->>>>'. $id2 . '</br>'; 
+echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
-
-
-    echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
-        wp_nonce_field('graba_aspirante', 'aspirante_nonce');
-
-
-        datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
-
-
-/* ***************************************************************************************************************************************************** */
-// 
-// $nint = sanitize_text_field($_POST['nint']);
-//
-echo '
-        <div class="container d-flex justify-content-center">
-            <div class=\'col-md-5\'>
-                <div class="form-group">
-                <label for="floatingInput" class="form-label"> N° int </label> 
-                    <div class=\'input-group\'>
-                        <input id="nint" name="nint" type="text" class="form-control" placeholder="xx-xx-xx-xx-xx" >
-                            <span class="input-group-addon"> 
-                                <span class="glyphicon glyphicon-pencil">
-                            </span> 
-                        </span> 
-                    </div>
-                    
-                    <div id="nint" class="form-text">We\'ll never share your email with anyone else.</div>
-
-                </div>
-            </div>
-        </div>
-';
-/* ***************************************************************************************************************************************************** */
-
-
-/* ***************************************************************************************************************************************************** */
-//
-//
-//
-echo '
-        <div class="container d-flex justify-content-center">
-            <div class=\'col-md-5\'>
-                <div class="form-group">
-                <label for="floatingInput" class="form-label"> Fecha </label> 
-                    <!-- <div class=\'input-group date\' id=\'datetimepicker7\'> -->
-                    <div class=\'input-group date\' id=\'datetimepicker7\'>  
-                        <input name="date" id="date" type=\'text\' class="form-control" placeholder="12/07/2021 12:00 AM"> 
-                            <span class="input-group-addon"> 
-                            <span class="glyphicon glyphicon-calendar">
-                            </span> 
-                        </span> 
-                    </div>
-
-                    <div id="nint" class="form-text">We\'ll never share your email with anyone else.</div>
-
-                </div>
-            </div>
-        </div>
-';
-
-
-/* ***************************************************************************************************************************************************** */
-
-
-/* ***************************************************************************************************************************************************** */
-echo '
-        <div class="container d-flex justify-content-center">
-            <div class=\'col-md-5\'>
-                <div class="form-group">
-                <label for="floatingInput" class="form-label"> Archivo  </label> 
-                    <div class=\'input-group\' id="customFile"> 
-                        <input type="file" class="form-control" id="customFile" name="customFile"> 
-                            <span class="input-group-addon"> 
-                            <span class="glyphicon glyphicon-open-file">
-                            </span> 
-                        </span> 
-                    </div>
-
-                    <div id="nint" class="form-text">We\'ll never share your email with anyone else.</div>
-                     
-                </div>
-            </div>
-        </div>
-';
-
-/* ***************************************************************************************************************************************************** */
-
-
-
-/* ***************************************************************************************************************************************************** */
-
-    echo '         <div class="form-input">';
-    echo '              <input type="submit" value="Enviar">';
-    echo '          </div>';
-    echo '      </form>';
-
-/* ***************************************************************************************************************************************************** */
-
-        datetimepicker_footer(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+select top 1 *
+  from tabla
+ where nombre_ruta = 'valor_ruta'
+ order by fecha desc
+*/
 
 }
 ?>
