@@ -48,8 +48,8 @@ echo $path_plugins;
               <th>'.$registros->date.'</th> 
               <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
               <th><a href="'.get_site_url().'">Detalle</a></th> 
-              <th><a href="'.get_site_url().'/delete/?id='.$registros->id.'&key_id='.$registros->key_id.'">Borrar</a></th>
-              <th><a href="'.get_site_url().'/edit/?id='.$registros->id.'&key_id='.$registros->key_id.'">Actualizar</a></th>  
+              <th><a href="'.get_site_url().'/index.php/delete/?id='.$registros->id.'&key_id='.$registros->key_id.'">Borrar</a></th>
+              <th><a href="'.get_site_url().'/index.php/edit/?id='.$registros->id.'&key_id='.$registros->key_id.'">Actualizar</a></th>  
             </tr>
             ';
         }
