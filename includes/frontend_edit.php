@@ -81,16 +81,17 @@ $wpdb->update( $tabla_crud,
 
 
 //SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id='4cJqU79Em8ZQ'
-$query2 = 'SELECT MAX(id) AS id FROM '.$tabla_crud.' where key_id=''
 
-$registros2 = $wpdb->get_results($query2);
-foreach ($registros2 as $registros2)
-{
-    $id2 = $registros2->id;
-    
+
+//$query = 'SELECT MAX(id) FROM '.$tabla_crud.' where key_id= '.$key_id;
+$query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
+
+$registros = $wpdb->get_results($query);
+
+foreach ($registros as $registros) {
+echo '=======================> '. $query . '</br>';
+echo '=======================> '. $registros->id . '</br>';
 }
-echo '----------------->>>>'. $id2 . '</br>'; 
-echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
 /*
 select top 1 *
