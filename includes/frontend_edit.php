@@ -81,7 +81,7 @@ $wpdb->update( $tabla_crud,
 
 
 //SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id='4cJqU79Em8ZQ'
-$query2 = 'SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id=''
+$query2 = 'SELECT MAX(id) AS id FROM '.$tabla_crud.' where key_id=''
 
 $registros2 = $wpdb->get_results($query2);
 foreach ($registros2 as $registros2)
