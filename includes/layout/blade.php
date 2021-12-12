@@ -15,26 +15,6 @@ function fomulario()
  
 
 
-/*
-    user_role(); // infentifica el rol del usuario
-
-        echo "role                      ----> " . $roles[0]                             . "</br>";
-        echo "sistname                  ----> " . $sistname                             . "</br>";
-        echo "tabla_crud                ----> " . $tabla_crud                           . "</br>";
-        echo "user_id                   ----> " . $user_id                              . "</br>";
-        echo "key_id                    ----> " . $key_id                               . "</br>";  
-        echo "nint                      ----> " . $nint                                 . "</br>";
-        echo "date                      ----> " . $date                                 . "</br>";
-        echo "customFile                ----> " . $customFile                           . "</br>";
-        echo "current_user              ----> " . sanitize_text_field($current_user)    . "</br>";
-        echo "upload_dir                ----> " . $upload_dir                           . "</br>";
-        echo "current_user->user_login  ----> " . $current_user->user_login             . "</br>";
-        echo "upload_dir['basedir']     ----> " . $upload_dir['basedir']                . "</br>";
-        echo "user_dirname              ----> " . $user_dirname                         . "</br>";
-        echo "dir_file                  ----> " . $dir_file                         . "</br>";
-*/
-
-
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
         wp_nonce_field('graba_aspirante', 'aspirante_nonce');
 

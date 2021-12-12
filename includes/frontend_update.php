@@ -27,13 +27,14 @@ $registros = $wpdb->get_results($query);
 
 $path_uploads = wp_get_upload_dir();
 
-/*
+
 echo $path_uploads['path'].'</br>';
 echo $path_uploads['url'].'</br>';
 echo $path_uploads['subdir'].'</br>';
 echo $path_uploads['baseurl'].'</br>';
 echo $path_uploads['error'].'</br>';
-*/
+echo get_site_url().'</br>';
+
 
 $path_plugins = plugins_url();
 echo $path_plugins;
@@ -46,9 +47,9 @@ echo $path_plugins;
               <th>'.$registros->nint.'</th>
               <th>'.$registros->date.'</th> 
               <th><a href="'.$path_uploads['baseurl'].$registros->dir_file_linux.$registros->dir_file.'">Descarga</a></th> 
-              <th><a href="">Detalle</a></th> 
-              <th><a href="http://localhost/wordpress/delete/?id='.$registros->id.'&key_id='.$registros->key_id.'">Borrar</a></th>
-              <th><a href="http://localhost/wordpress/edit/?id='.$registros->id.'&key_id='.$registros->key_id.'">Actualizar</a></th>  
+              <th><a href="'.get_site_url().'">Detalle</a></th> 
+              <th><a href="'.get_site_url().'/delete/?id='.$registros->id.'&key_id='.$registros->key_id.'">Borrar</a></th>
+              <th><a href="'.get_site_url().'/edit/?id='.$registros->id.'&key_id='.$registros->key_id.'">Actualizar</a></th>  
             </tr>
             ';
         }
