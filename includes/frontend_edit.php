@@ -76,14 +76,6 @@ $wpdb->update( $tabla_crud,
 );
 
 
-//$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
-//$registros = $wpdb->get_results($query);
-
-
-//SELECT MAX(id) AS id FROM wordpress.wp_crud where wordpress.wp_crud.key_id='4cJqU79Em8ZQ'
-
-
-//$query = 'SELECT MAX(id) FROM '.$tabla_crud.' where key_id= '.$key_id;
 $query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
 
 $registros = $wpdb->get_results($query);
