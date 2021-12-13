@@ -86,17 +86,16 @@ global $form_date;
    $wpdb->insert(
             $tabla_crud,
             array(
-                'user_id' => $user_id,
-                'key_id' => $key_id,
-                'nint'  => $nint,
-                'date'  => $date,
-                'dir_file_linux'  => $dir_file_linux,
-                'dir_file_win'  => $dir_file_win,
-                'dir_file'  => $dir_file,
-                'status_id' => $status_id,
+                'user_id'           => $user_id,
+                'key_id'            => $key_id,
+                'nint'              => $nint,
+                'date'              => $date,
+                'dir_file_linux'    => $dir_file_linux,
+                'dir_file_win'      => $dir_file_win,
+                'dir_file'          => $dir_file,
+                'status_id'         => $status_id,
             )
         );
-
 
 
 

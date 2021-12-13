@@ -29,6 +29,7 @@ $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']);
 $key_id  = sanitize_text_field($_GET['key_id']);
 
+
 $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
 $registros = $wpdb->get_results($query);
 
@@ -61,14 +62,14 @@ foreach ($registros as $registros)
     $wpdb->insert(
             $tabla_crud,
             array(
-                'user_id' => $user_id,
-                'key_id' => $key_id,
-                'nint'  => $nint,
-                'date'  => $date,
-                'dir_file_linux'  => $dir_file_linux,
-                'dir_file_win'  => $dir_file_win,
-                'dir_file'  => $dir_file,
-                'status_id' => 0,
+                'user_id'           => $user_id,
+                'key_id'            => $key_id,
+                'nint'              => $nint,
+                'date'              => $date,
+                'dir_file_linux'    => $dir_file_linux,
+                'dir_file_win'      => $dir_file_win,
+                'dir_file'          => $dir_file,
+                'status_id'         => 0,
             )
         );
 

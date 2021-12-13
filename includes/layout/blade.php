@@ -173,6 +173,19 @@ $registros = $wpdb->get_results($query);
 
 /* ************************************************************************************* */
 // 
+
+echo '
+    <input id="confir_insert" name="confir_insert" type="hidden"  value="1" >
+    <input id="confir_insert" name="id" type="hidden"  value="'.$id.'" >
+    <input id="confir_insert" name="edit_id" type="hidden"  value="'.$id.'" >
+    <input id="confir_insert" name="key_id" type="hidden"  value="'.$edit_key_id.'" >
+';
+/* ************************************************************************************* */
+
+
+
+/* ************************************************************************************* */
+// 
 // $nint = sanitize_text_field($_POST['nint']);
 //
 echo '
