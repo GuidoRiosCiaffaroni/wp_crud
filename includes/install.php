@@ -35,6 +35,13 @@ global $file_name;
     // Ejecucion de la QUERY
     dbDelta($sql); 
 
+
+
+
+
+
+    
+
 }
 
 ?>
