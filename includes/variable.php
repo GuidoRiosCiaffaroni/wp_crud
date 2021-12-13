@@ -6,8 +6,6 @@ add_shortcode('ShortCode_global_variable', 'global_variable');
 function global_variable() 
 {
 
-
-
 /*
 echo '$ user_id =>'.$user_id.'</br>';
 $path_uploads = wp_get_upload_dir();

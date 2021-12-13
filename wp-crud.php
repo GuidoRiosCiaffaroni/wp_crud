@@ -18,7 +18,6 @@
 
 /******************************************************************************************/
 
-
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
@@ -40,8 +39,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/security/secure.php';
 // Funciones para la generacion de Blade 
 require_once plugin_dir_path( __FILE__ ) . 'includes/layout/blade.php';
 
-
-
 /*Funciones requeridas para administrar y gestionar */
 
 // Funciones requeridas para gestionar archivos
@@ -62,6 +59,8 @@ global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
 global $file_name;  
+
+
 
 /*
 $wp_session['loggedIn'] = 15;

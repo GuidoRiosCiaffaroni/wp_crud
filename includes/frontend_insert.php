@@ -15,7 +15,7 @@ add_shortcode('kfp_ShortCode_Insert_form', 'Kfp_Insert_form');
 function Kfp_Insert_form() 
 {
 
-/*Variables globales*/
+/* **** Variables globales **** */
 global $wpdb;               // datos del sistema
 global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
@@ -26,7 +26,12 @@ global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
 global $file_name;  
- 
+
+/* **** Variables globales de formulario **** */ 
+global $form_key_id;
+global $form_nint;
+global $form_date;
+
 
 
     $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
@@ -38,6 +43,11 @@ global $file_name;
     $date           = sanitize_text_field($_POST['date']);
     $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
     $status_id      = '1';
+
+    /* ** carga de informacion en variables globales ** */
+    $form_key_id = $key_id ;
+    $form_nint = $nint;
+    $form_date = $date;
 
 
 
