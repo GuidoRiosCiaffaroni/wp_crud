@@ -85,12 +85,6 @@ echo '=======================> '. $query . '</br>';
 echo '=======================> '. $registros->id . '</br>';
 }
 
-/*
-select top 1 *
-  from tabla
- where nombre_ruta = 'valor_ruta'
- order by fecha desc
-*/
 
 }
 ?>
