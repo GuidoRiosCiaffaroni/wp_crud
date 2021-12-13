@@ -16,17 +16,22 @@ add_shortcode('kfp_ShortCode_Update_form', 'Kfp_Update_form');
 function Kfp_Update_form() 
 {
 
-  /*Variables globales*/
-
-global $wpdb;         // datos del sistema
-global $wpbc_db_version;  // Version del base de datos - utilizado para las actualizaciones
-global $sistname;     // nombre de la tabla de sistema
-global $user_id;      // ID del usuario
-global $status_user;    // Perfil del usuario 
+/*Variables globales*/
+global $wpdb;             // datos del sistema
+global $wp_session;     // Inicio sesion variables
+global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
+global $sistname;         // nombre de la tabla de sistema
+global $user_id;          // ID del usuario
+global $status_user;      // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;     // Nombre de archivo a subir
+global $dir_file;         // Nombre de archivo a subir
 global $file_name;  
+
+
+
+
+
 
 
 $query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
