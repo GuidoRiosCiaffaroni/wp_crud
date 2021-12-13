@@ -38,6 +38,12 @@ global $file_name;
     $date           = sanitize_text_field($_POST['date']);
     $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
     $status_id      = '1';
+
+
+
+
+
+
     /*Fin almacena informacion de formulario BLADE*/
 
     /* Inicio Validacion de infomacion para crear y almacenar archivos*/
@@ -90,7 +96,7 @@ global $file_name;
 
 
 
-fomulario(); // Formulario Blade 
+form_insert(); // Formulario Blade 
 
 
 

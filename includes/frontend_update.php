@@ -28,17 +28,10 @@ global $upload_dir;
 global $dir_file;         // Nombre de archivo a subir
 global $file_name;  
 
-
-
-
-
-
-
 $query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
 $registros = $wpdb->get_results($query);
 $path_uploads = wp_get_upload_dir();
 $path_plugins = plugins_url();
-
 
         // nombre de los campos de la tabla
         foreach ($registros as $registros) {
@@ -55,8 +48,6 @@ $path_plugins = plugins_url();
             ';
         }
 
-
-
         $template = '<table class="table-data">
                       <tr>
                         <th>nint </th>
@@ -71,17 +62,10 @@ $path_plugins = plugins_url();
 
         return $content.str_replace('{data}', $result, $template);
 
-
-
-
         echo '</br>';
-
-
-
 
   }
 // Ejecutamos nuestro funcion en WordPress
 //add_action('wp', 'leer_wpdb');
-//https://mdbootstrap.com/docs/b4/jquery/tables/pagination/#docsTabsOverview
 ?>
 

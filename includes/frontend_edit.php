@@ -15,7 +15,7 @@ add_shortcode('kfp_ShortCode_Edit_form', 'Kfp_Edit_form');
 
 function Kfp_Edit_form() 
 {
-  
+
 /*Variables globales*/
 global $wpdb;             // datos del sistema
 global $wp_session;     // Inicio sesion variables
@@ -28,31 +28,32 @@ global $upload_dir;
 global $dir_file;         // Nombre de archivo a subir
 global $file_name;  
 
-
 $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']);
 $key_id  = sanitize_text_field($_GET['key_id']);
 
+$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
+$registros = $wpdb->get_results($query);
+
+// nombre de los campos de la tabla
+  foreach ($registros as $registros) 
+  {
+    $id = $registros->id;
+    $user_id = $registros->user_id; 
+    $key_id = $registros->key_id; 
+    $nint = $registros->nint;
+    $date = $registros->date;
+    $dir_file_linux = $registros->dir_file_linux;
+    $dir_file_win = $registros->dir_file_win;
+    $dir_file = $registros->dir_file;
+    $status_id = $registros->status_id;
+    $create_at = $registros->create_at;  
+  }
+  
+form_edit();
+
   function update_edit()
   {
-
-    $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
-    $registros = $wpdb->get_results($query);
-
-    // nombre de los campos de la tabla
-    foreach ($registros as $registros) 
-    {
-        $id = $registros->id;
-        $user_id = $registros->user_id; 
-        $key_id = $registros->key_id; 
-        $nint = $registros->nint;
-        $date = $registros->date;
-        $dir_file_linux = $registros->dir_file_linux;
-        $dir_file_win = $registros->dir_file_win;
-        $dir_file = $registros->dir_file;
-        $status_id = $registros->status_id;
-        $create_at = $registros->create_at;  
-    }
 
     $wpdb->insert(
       $tabla_crud,
@@ -77,15 +78,12 @@ $key_id  = sanitize_text_field($_GET['key_id']);
       array( 'key_id' => $key_id )
     );
 
-
     $query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
     $registros = $wpdb->get_results($query);
     foreach ($registros as $registros) {
     echo '=======================> '. $query . '</br>';
     echo '=======================> '. $registros->id . '</br>';
     }
-
-
 
   }
 
