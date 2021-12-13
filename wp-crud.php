@@ -22,9 +22,7 @@
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 /*Importa funciones de instalacion*/
-
 require_once plugin_dir_path( __FILE__ ) . 'includes/variable.php';
-
 // Instalacion del Sistema Base de datos
 require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
 // Formuario de acceso en frontend
@@ -35,9 +33,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_update.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_delete.php';
 // Formuario de acceso en frontend
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_edit.php';
-
-
-
 // Funciones para grafica de Fecha y Hora 
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
 // Funciones de seguridad 
@@ -57,18 +52,16 @@ require_once(ABSPATH . "wp-admin" . '/includes/media.php');
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 /*Variables globales*/
-global $wpdb;         		// datos del sistema
-global $wp_session; 		// Inicio sesion variables
-global $wpbc_db_version;  	// Version del base de datos - utilizado para las actualizaciones
-global $sistname;     		// nombre de la tabla de sistema
-global $user_id;      		// ID del usuario
-global $status_user;    	// Perfil del usuario 
+global $wpdb;               // datos del sistema
+global $wp_session;         // Inicio sesion variables
+global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
+global $sistname;           // nombre de la tabla de sistema
+global $user_id;            // ID del usuario
+global $status_user;        // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;     		// Nombre de archivo a subir
+global $dir_file;           // Nombre de archivo a subir
 global $file_name;  
-
-
 
 /*
 $wp_session['loggedIn'] = 15;
@@ -79,19 +72,12 @@ $wpbc_db_version = '1.1.0';
 $sistname = 'crud'; 
 $user_id = get_current_user_id();
 
-
-
-
-
-
 /* Instalacion de Base de datos */
 wpdb_install();
 register_activation_hook(__FILE__, 'wpdb_install');
 
-
 /*Inicio crear shortcode en la pagina de inicio */
 //add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
-
 
 ?>
