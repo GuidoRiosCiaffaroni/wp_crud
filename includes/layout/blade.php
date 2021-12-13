@@ -1,4 +1,7 @@
 <?php
+/* ************************************************************************************* */
+/* Formulario para insertar datos                                                        */
+/* ************************************************************************************* */
 
 function form_insert()
 {
@@ -29,9 +32,8 @@ global $form_date;
 
 
 /* ************************************************************************************* */
-// 
 // $nint = sanitize_text_field($_POST['nint']);
-//
+
 echo '
         <div class="container d-flex justify-content-center">
             <div class=\'col-md-5\'>
@@ -54,8 +56,6 @@ echo '
 /* ************************************************************************************* */
 
 /* ************************************************************************************* */
-//
-//
 //
 echo '
         <div class="container d-flex justify-content-center">
@@ -82,8 +82,6 @@ echo '
 
 /* ************************************************************************************* */
 //
-//
-//
 echo '
         <div class="container d-flex justify-content-center">
             <div class=\'col-md-5\'>
@@ -109,8 +107,6 @@ echo '
 
 /* ************************************************************************************* */
 //
-//
-//
     echo '         <div class="form-input">';
     echo '              <input type="submit" value="Enviar">';
     echo '          </div>';
@@ -122,9 +118,12 @@ echo '
 
 }
 
+
+/* ************************************************************************************* */
+/* Formulario para editar datos                                                          */
+/* ************************************************************************************* */
 function form_edit()
 {
-
 /* **** Variables globales **** */
 global $wpdb;               // datos del sistema
 global $wp_session;         // Inicio sesion variables
@@ -140,12 +139,37 @@ global $file_name;
 /* **** Variables globales de formulario **** */ 
 global $form_key_id;
 global $form_nint;
-global $form_date; 
- 
+global $form_date;
+
+$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+$id      = sanitize_text_field($_GET['id']);
+$key_id  = sanitize_text_field($_GET['key_id']);
+
+$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
+$registros = $wpdb->get_results($query);
+
+// nombre de los campos de la tabla
+  foreach ($registros as $registros) 
+  {
+    $id = $registros->id;
+    $user_id = $registros->user_id; 
+    $key_id = $registros->key_id; 
+    $nint = $registros->nint;
+    $date = $registros->date;
+    $dir_file_linux = $registros->dir_file_linux;
+    $dir_file_win = $registros->dir_file_win;
+    $dir_file = $registros->dir_file;
+    $status_id = $registros->status_id;
+    $create_at = $registros->create_at;  
+  }
+
+
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
         wp_nonce_field('graba_aspirante', 'aspirante_nonce');
 
+
         datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
+
 
 /* ************************************************************************************* */
 // 
@@ -157,14 +181,14 @@ echo '
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> N° int </label> 
                     <div class=\'input-group\'>
-                        <input id="nint" name="nint" type="text" class="form-control" placeholder="'.$nint.'" >
+                        <input id="nint" name="nint" type="text" class="form-control" placeholder="xx-xx-xx-xx-xx" >
                             <span class="input-group-addon"> 
                                 <span class="glyphicon glyphicon-pencil">
                             </span> 
                         </span> 
                     </div>
                     
-                    <div id="nint" class="form-text">La informacion ingresada es '.$form_nint.'</div>
+                    <div id="nint" class="form-text">El dato actualmente es : '.$nint.'</div>
 
                 </div>
             </div>
@@ -183,14 +207,14 @@ echo '
                 <label for="floatingInput" class="form-label"> Fecha </label> 
                     <!-- <div class=\'input-group date\' id=\'datetimepicker7\'> -->
                     <div class=\'input-group date\' id=\'datetimepicker7\'>  
-                        <input name="date" id="date" type=\'text\' class="form-control" placeholder="'.$form_date.'"> 
+                        <input name="date" id="date" type=\'text\' class="form-control" placeholder="12/07/2021 12:00 AM"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-calendar">
                             </span> 
                         </span> 
                     </div>
 
-                    <div id="nint" class="form-text">We\'ll never share your email with anyone else.</div>
+                    <div id="nint" class="form-text">La fecha actual es '.$date.' </div>
 
                 </div>
             </div>
@@ -216,7 +240,7 @@ echo '
                         </span> 
                     </div>
 
-                    <div id="nint" class="form-text">We\'ll never share your email with anyone else.</div>
+                    <div id="nint" class="form-text">El archivo actual es : '. $dir_file .'</div>
                      
                 </div>
             </div>
@@ -238,6 +262,9 @@ echo '
 /* ************************************************************************************* */
 
         datetimepicker_footer(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
+
+
+
 
 }
 

@@ -37,10 +37,16 @@ $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']);
 $key_id  = sanitize_text_field($_GET['key_id']);
 
-$query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
-$registros = $wpdb->get_results($query);
 
-// nombre de los campos de la tabla
+form_edit();
+
+  function update_edit()
+  {
+
+  $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
+  $registros = $wpdb->get_results($query);
+
+  // nombre de los campos de la tabla
   foreach ($registros as $registros) 
   {
     $id = $registros->id;
@@ -55,10 +61,6 @@ $registros = $wpdb->get_results($query);
     $create_at = $registros->create_at;  
   }
 
-form_edit();
-
-  function update_edit()
-  {
 
     $wpdb->insert(
       $tabla_crud,

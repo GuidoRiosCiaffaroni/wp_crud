@@ -49,11 +49,6 @@ global $form_date;
     $form_nint = $nint;
     $form_date = $date;
 
-
-
-
-
-
     /*Fin almacena informacion de formulario BLADE*/
 
     /* Inicio Validacion de infomacion para crear y almacenar archivos*/
