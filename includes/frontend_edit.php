@@ -34,66 +34,22 @@ global $form_nint;
 global $form_date;
 
 $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
-$id      = sanitize_text_field($_GET['id']);
-$key_id  = sanitize_text_field($_GET['key_id']);
+$id             = sanitize_text_field($_GET['id']);
+$key_id         = sanitize_text_field($_GET['key_id']);
+$nint           = sanitize_text_field($_POST['edit_nint']);
+$date           = sanitize_text_field($_POST['edit_date']);
+$customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
+$status_id      = '1';
+
+
 
 
 form_edit();
 
-  function update_edit()
-  {
-
-  $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
-  $registros = $wpdb->get_results($query);
-
-  // nombre de los campos de la tabla
-  foreach ($registros as $registros) 
-  {
-    $id = $registros->id;
-    $user_id = $registros->user_id; 
-    $key_id = $registros->key_id; 
-    $nint = $registros->nint;
-    $date = $registros->date;
-    $dir_file_linux = $registros->dir_file_linux;
-    $dir_file_win = $registros->dir_file_win;
-    $dir_file = $registros->dir_file;
-    $status_id = $registros->status_id;
-    $create_at = $registros->create_at;  
-  }
 
 
-    $wpdb->insert(
-      $tabla_crud,
-        array(
-          'user_id'         => $user_id,
-          'key_id'          => $key_id,
-          'nint'            => $nint,
-          'date'            => $date,
-          'dir_file_linux'  => $dir_file_linux,
-          'dir_file_win'    => $dir_file_win,
-          'dir_file'        => $dir_file,
-          'status_id'       => 0,
-        )
-    );
-
-    $wpdb->update( $tabla_crud, 
-      // Datos que se remplazarán
-      array( 
-        'status_id' => '0'
-      ),
-      // Cuando el ID del campo es igual al número $key_id
-      array( 'key_id' => $key_id )
-    );
-
-    $query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
-    $registros = $wpdb->get_results($query);
-    foreach ($registros as $registros) {
-    echo '=======================> '. $query . '</br>';
-    echo '=======================> '. $registros->id . '</br>';
-    }
-
-  }
 
 }
+
 ?>
 

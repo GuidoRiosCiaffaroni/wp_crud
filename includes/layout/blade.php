@@ -165,7 +165,7 @@ $registros = $wpdb->get_results($query);
 
 
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_insert" class="cuestionario" enctype="multipart/form-data">';
-        echo 'noce -->' .wp_nonce_field('graba_insert', 'insert_nonce');
+        wp_nonce_field('graba_insert', 'insert_nonce');
 
 
         datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
@@ -181,7 +181,7 @@ echo '
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> N° int </label> 
                     <div class=\'input-group\'>
-                        <input id="nint" name="nint" type="text" class="form-control" placeholder="xx-xx-xx-xx-xx" >
+                        <input id="nint" name="edit_nint" type="text" class="form-control" value="'.$nint.'" >
                             <span class="input-group-addon"> 
                                 <span class="glyphicon glyphicon-pencil">
                             </span> 
@@ -207,7 +207,7 @@ echo '
                 <label for="floatingInput" class="form-label"> Fecha </label> 
                     <!-- <div class=\'input-group date\' id=\'datetimepicker7\'> -->
                     <div class=\'input-group date\' id=\'datetimepicker7\'>  
-                        <input name="date" id="date" type=\'text\' class="form-control" placeholder="12/07/2021 12:00 AM"> 
+                        <input id="date" name="edit_date"  type=\'text\' class="form-control" value="'.$date.'"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-calendar">
                             </span> 
@@ -233,7 +233,7 @@ echo '
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> Archivo  </label> 
                     <div class=\'input-group\' id="customFile"> 
-                        <input type="file" class="form-control" id="customFile" name="customFile"> 
+                        <input type="file" class="form-control" id="customFile" name="edit_customFile" value="'. $dir_file .'"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-open-file">
                             </span> 
