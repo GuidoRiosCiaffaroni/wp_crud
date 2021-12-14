@@ -19,6 +19,7 @@ function Kfp_Insert_form()
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
+global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;

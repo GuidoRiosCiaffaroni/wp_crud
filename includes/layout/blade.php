@@ -6,9 +6,8 @@
 function form_insert()
 {
 
-/* **** Variables globales **** */
+/*Variables globales*/
 global $wpdb;               // datos del sistema
-global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
@@ -16,12 +15,10 @@ global $status_user;        // Perfil del usuario
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
+global $global_data;        // Almacenamiento de datos Globales
 global $file_name;  
-
-/* **** Variables globales de formulario **** */ 
-global $form_key_id;
-global $form_nint;
-global $form_date;
+global $wp_session;         // Inicio sesion variables
+global $global_data;
 
  
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
@@ -124,22 +121,23 @@ echo '
 /* ************************************************************************************* */
 function form_edit()
 {
-/* **** Variables globales **** */
+    
+/*Variables globales*/
 global $wpdb;               // datos del sistema
-global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
+global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
+global $global_data;        // Almacenamiento de datos Globales
 global $file_name;  
+global $wp_session;         // Inicio sesion variables
+global $global_data;
 
-/* **** Variables globales de formulario **** */ 
-global $form_key_id;
-global $form_nint;
-global $form_date;
+
 
 $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']);
@@ -175,10 +173,9 @@ $registros = $wpdb->get_results($query);
 // 
 
 echo '
-    <input id="confir_insert" name="confir_insert" type="hidden"  value="1" >
-    <input id="confir_insert" name="id" type="hidden"  value="'.$id.'" >
     <input id="confir_insert" name="edit_id" type="hidden"  value="'.$id.'" >
-    <input id="confir_insert" name="key_id" type="hidden"  value="'.$edit_key_id.'" >
+    <input id="confir_insert" name="edit_key_id" type="hidden"  value="'.$key_id.'" >
+    <input id="confir_insert" name="confir_insert" type="hidden"  value="1" >
 ';
 /* ************************************************************************************* */
 

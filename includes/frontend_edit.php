@@ -20,59 +20,44 @@ function Kfp_Edit_form()
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
+global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
-global $global_data;    // Almacenamiento de datos Globales
+global $global_data;        // Almacenamiento de datos Globales
 global $file_name;  
 global $wp_session;         // Inicio sesion variables
 global $global_data;
 
 
 
-$id                  = sanitize_text_field($_GET['id']);
-$edit_key_id         = sanitize_text_field($_GET['key_id']);
-$edit_nint           = sanitize_text_field($_POST['edit_nint']);
-$edit_date           = sanitize_text_field($_POST['edit_date']);
-$customFile          = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
-$status_id           = '1';
+/*datos Obtenidos desde blade*/
+
+$id                  = sanitize_text_field($_POST['edit_id']);
+$edit_key_id         = sanitize_text_field($_POST['edit_key_id']);
 $confir_insert       = sanitize_text_field($_POST['confir_insert']);
 
-/*
-$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
-$args = array(
-  'id'     => 'category',
-  '$edit_key_id'      => 'name',
-  'edit_nint'   => 0,
-  'edit_date'   => 0,
-  'customFile' => 1,
-  'status_idi'     => 'Categories'
-);
-*/
-
-
-/*
-echo "id --->".$id."</br>";
-echo "key_id --->".$edit_key_id."</br>";
-*/
-
+$edit_nint           = sanitize_text_field($_POST['edit_nint']);  
+$edit_date           = sanitize_text_field($_POST['edit_date']);   
 
 if ($confir_insert == 1)
 {
-echo "confir_insert --->".$confir_insert."</br>";
+  $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
+/*
+  echo 'id =======================>' . $id .'</br>';
+  echo 'edit_key_id   =======================>' . $edit_key_id   .'</br>';
+  echo 'confir_insert =======================>' . $confir_insert .'</br>';
+*/
 
   $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
-  echo "query --->".$query."</br>";
   $registros = $wpdb->get_results($query);
 
   // nombre de los campos de la tabla
-  /* Inicio copia los datos para mantener el mas antiguo*/
   foreach ($registros as $registros) 
   {
-    /*
     $id = $registros->id;
     $user_id = $registros->user_id; 
     $key_id = $registros->key_id; 
@@ -82,78 +67,63 @@ echo "confir_insert --->".$confir_insert."</br>";
     $dir_file_win = $registros->dir_file_win;
     $dir_file = $registros->dir_file;
     $status_id = $registros->status_id;
-    */
-
-    /*
-    $wp_session['id'] = $registros->id;
-    $wp_session['user_id'] = $registros->user_id;
-    $wp_session['key_id'] = $registros->key_id;
-    $wp_session['nint'] = $registros->nint;
-    $wp_session['date'] = $registros->date;
-    $wp_session['dir_file_linux'] = $registros->dir_file_linux;
-    $wp_session['dir_file_win'] = $registros->dir_file_win;
-    $wp_session['dir_file'] = $registros->dir_file;
-    $wp_session['status_id'] = $registros->status_id;
-    */
+    $create_at = $registros->create_at;  
   }
 
-/*
-$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
-$id                  = sanitize_text_field($_GET['id']);
-$edit_key_id         = sanitize_text_field($_GET['key_id']);
-$edit_nint           = sanitize_text_field($_POST['edit_nint']);
-$edit_date           = sanitize_text_field($_POST['edit_date']);
-$customFile          = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
-$status_id           = '1';
-$confir_insert       = sanitize_text_field($_POST['confir_insert']);
-*/
-
-
-
-
-/*
-    $wpdb->insert(
-      $tabla_crud,
-        array(
-          'user_id'         => $user_id,
-          'key_id'          => $key_id,
-          'nint'            => $nint,
-          'date'            => $date,
-          'dir_file_linux'  => $dir_file_linux,
-          'dir_file_win'    => $dir_file_win,
-          'dir_file'        => $dir_file,
-          'status_id'       => 0,
-        )
+  /*Inicio  Crea Duplicado de datos desactivados */
+  $global_data = array(
+    'user_id'           => $user_id,
+    'key_id'            => $key_id,
+    'nint'              => $nint,
+    'date'              => $date,
+    'dir_file_linux'    => $dir_file_linux,
+    'dir_file_win'      => $dir_file_win,
+    'dir_file'          => $dir_file,
+    'status_id'         => '0',
     );
-*/
 
-  /* Fin Copia los datos para mantener el mas antiguo*/
+  $wpdb->insert($tabla_crud,$global_data); 
+  /*Fin Crea Duplicado de datos desactivados*/
 
   /* Inicio desactiva los documentos de la base de datos */
-    $wpdb->update( $tabla_crud, 
-      // Datos que se remplazarán
-      array( 
-        'status_id' => '0'
-      ),
-      // Cuando el ID del campo es igual al número $key_id
-      array( 'key_id' => $key_id )
-    );
+  $wpdb->update( $tabla_crud, 
+    array( 
+      'status_id' => '0'
+    ),
+    array( 
+      'key_id' => $key_id 
+    )
+  );
+  /* Fin desactiva los documentos de la base de datos */
+
+  /* Inicio se obtienen el ultimo registro correspondiente a la key */
+  $query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
+  $last = $wpdb->get_results($query);
+  foreach ($last as $last) 
+  {
+    $last_id = $last->id;
+  }
+/* Fin se obtienen el ultimo registro correspondiente a la key */
+
+
+  /* Inicio desactiva los documentos de la base de datos */
+  $wpdb->update( $tabla_crud, 
+    array( 
+      'nint' => $edit_nint,
+      'date' => $edit_date,
+      'status_id' => '1'
+    ),
+    array( 
+      'id' => $last_id
+    )
+  );
   /* Fin desactiva los documentos de la base de datos */
 
 
-
-    //$query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
-//
-    $query = "SELECT MAX(id) AS id FROM ".$tabla_crud." where wp_crud.key_id='".$key_id."'";
-    $last = $wpdb->get_results($query);
-    foreach ($last as $last) {
-    echo '========> '. $query . '</br>';
-    echo '========> '. $last->id . '</br>';
-    }
-//
-
-
 }
+
+
+
 
 form_edit();
 //add_action('init', 'form_edit');

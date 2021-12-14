@@ -53,28 +53,17 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
+global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
-global $global_data;		// Almacenamiento de datos Globales
+global $global_data;        // Almacenamiento de datos Globales
 global $file_name;  
 global $wp_session;         // Inicio sesion variables
 global $global_data;
 
-
-/*
-echo 'id --->'.$wp_session['id'].'</br>'; 
-echo 'user_id --->'.$wp_session['user_id'].'</br>'; 
-echo 'key_id --->'.$wp_session['key_id'].'</br>'; 
-echo 'nint --->'.$wp_session['nint'].'</br>'; 
-echo 'date --->'.$wp_session['date'].'</br>'; 
-echo 'dir_file_linux --->'.$wp_session['dir_file_linux'].'</br>'; 
-echo 'dir_file_win --->'.$wp_session['dir_file_win'].'</br>'; 
-echo 'dir_file --->'.$wp_session['dir_file'].'</br>'; 
-echo 'status_id --->'.$wp_session['status_id'].'</br>'; 
-*/
 
 /*
 $wp_session['loggedIn'] = 15;
