@@ -46,12 +46,6 @@ if ($confir_insert == 1)
 {
   $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
-/*
-  echo 'id =======================>' . $id .'</br>';
-  echo 'edit_key_id   =======================>' . $edit_key_id   .'</br>';
-  echo 'confir_insert =======================>' . $confir_insert .'</br>';
-*/
-
   $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
   $registros = $wpdb->get_results($query);
 
