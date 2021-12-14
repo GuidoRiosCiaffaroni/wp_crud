@@ -43,6 +43,17 @@ $status_id           = '1';
 $confir_insert       = sanitize_text_field($_POST['confir_insert']);
 
 
+$args = array(
+  'id'     => 'category',
+  '$edit_key_id'      => 'name',
+  'edit_nint'   => 0,
+  'edit_date'   => 0,
+  'customFile' => 1,
+  'status_idi'     => 'Categories'
+);
+
+
+
 echo "id --->".$id."</br>";
 echo "key_id --->".$edit_key_id."</br>";
 
@@ -71,6 +82,7 @@ echo "confir_insert --->".$confir_insert."</br>";
     $status_id = $registros->status_id;
     */
 
+    /*
     $wp_session['id'] = $registros->id;
     $wp_session['user_id'] = $registros->user_id;
     $wp_session['key_id'] = $registros->key_id;
@@ -80,7 +92,7 @@ echo "confir_insert --->".$confir_insert."</br>";
     $wp_session['dir_file_win'] = $registros->dir_file_win;
     $wp_session['dir_file'] = $registros->dir_file;
     $wp_session['status_id'] = $registros->status_id;
-
+    */
   }
 
 /*
