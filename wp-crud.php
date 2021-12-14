@@ -58,11 +58,13 @@ global $status_user;        // Perfil del usuario
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
+global $global_data;		// Almacenamiento de datos Globales
 global $file_name;  
-
-
 global $wp_session;         // Inicio sesion variables
+global $global_data;
 
+
+/*
 echo 'id --->'.$wp_session['id'].'</br>'; 
 echo 'user_id --->'.$wp_session['user_id'].'</br>'; 
 echo 'key_id --->'.$wp_session['key_id'].'</br>'; 
@@ -72,7 +74,7 @@ echo 'dir_file_linux --->'.$wp_session['dir_file_linux'].'</br>';
 echo 'dir_file_win --->'.$wp_session['dir_file_win'].'</br>'; 
 echo 'dir_file --->'.$wp_session['dir_file'].'</br>'; 
 echo 'status_id --->'.$wp_session['status_id'].'</br>'; 
-
+*/
 
 /*
 $wp_session['loggedIn'] = 15;

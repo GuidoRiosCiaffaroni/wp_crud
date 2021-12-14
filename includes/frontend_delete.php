@@ -1,4 +1,10 @@
 <?php
+/******************************************************************************************/
+// Archivo : frontend_delete.php
+// Funcion : Kfp_Delete_form() 'Borrar los datos'
+// Objetos : $wpdb->get_results($query)
+
+/******************************************************************************************/
 
 /*Inicio crear shortcode en la pagina de inicio */
 add_shortcode('kfp_ShortCode_Delete_form', 'Kfp_Delete_form');

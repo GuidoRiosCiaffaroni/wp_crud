@@ -16,9 +16,8 @@ add_shortcode('kfp_ShortCode_Edit_form', 'Kfp_Edit_form');
 function Kfp_Edit_form() 
 {
 
-/* **** Variables globales **** */
+/*Variables globales*/
 global $wpdb;               // datos del sistema
-global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
@@ -26,14 +25,13 @@ global $status_user;        // Perfil del usuario
 global $user_dirname;
 global $upload_dir;
 global $dir_file;           // Nombre de archivo a subir
+global $global_data;    // Almacenamiento de datos Globales
 global $file_name;  
+global $wp_session;         // Inicio sesion variables
+global $global_data;
 
-/* **** Variables globales de formulario **** */ 
-global $form_key_id;
-global $form_nint;
-global $form_date;
 
-$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+
 $id                  = sanitize_text_field($_GET['id']);
 $edit_key_id         = sanitize_text_field($_GET['key_id']);
 $edit_nint           = sanitize_text_field($_POST['edit_nint']);
@@ -42,7 +40,8 @@ $customFile          = wp_upload_bits( $_FILES['customFile']['name'], null, @fil
 $status_id           = '1';
 $confir_insert       = sanitize_text_field($_POST['confir_insert']);
 
-
+/*
+$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 $args = array(
   'id'     => 'category',
   '$edit_key_id'      => 'name',
@@ -51,11 +50,14 @@ $args = array(
   'customFile' => 1,
   'status_idi'     => 'Categories'
 );
+*/
 
 
-
+/*
 echo "id --->".$id."</br>";
 echo "key_id --->".$edit_key_id."</br>";
+*/
+
 
 if ($confir_insert == 1)
 {
