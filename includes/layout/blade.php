@@ -121,7 +121,7 @@ echo '
 /* ************************************************************************************* */
 function form_edit()
 {
-    
+
 /*Variables globales*/
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
@@ -243,7 +243,7 @@ echo '
                 <div class="form-group">
                 <label for="floatingInput" class="form-label"> Archivo  </label> 
                     <div class=\'input-group\' id="customFile"> 
-                        <input type="file" class="form-control" id="customFile" name="edit_customFile" value="'. $dir_file .'"> 
+                        <input type="file" class="form-control" id="edit_customFile" name="edit_customFile" value="'. $dir_file .'"> 
                             <span class="input-group-addon"> 
                             <span class="glyphicon glyphicon-open-file">
                             </span> 

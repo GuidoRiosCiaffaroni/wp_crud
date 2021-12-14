@@ -32,8 +32,6 @@ global $global_data;
 
 
 
-
-
     $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
     /*Incio almacena informacion de formulario BLADE*/
@@ -93,24 +91,6 @@ global $global_data;
 
    $wpdb->insert($tabla_crud,$global_data);
 
-
-
-
-/*
-   $wpdb->insert(
-            $tabla_crud,
-            array(
-                'user_id'           => $user_id,
-                'key_id'            => $key_id,
-                'nint'              => $nint,
-                'date'              => $date,
-                'dir_file_linux'    => $dir_file_linux,
-                'dir_file_win'      => $dir_file_win,
-                'dir_file'          => $dir_file,
-                'status_id'         => $status_id,
-            )
-        );
-*/
 
 
 

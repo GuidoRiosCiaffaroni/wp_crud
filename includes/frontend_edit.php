@@ -40,7 +40,8 @@ $edit_key_id         = sanitize_text_field($_POST['edit_key_id']);
 $confir_insert       = sanitize_text_field($_POST['confir_insert']);
 
 $edit_nint           = sanitize_text_field($_POST['edit_nint']);  
-$edit_date           = sanitize_text_field($_POST['edit_date']);   
+$edit_date           = sanitize_text_field($_POST['edit_date']);
+$edit_customFile     = wp_upload_bits( $_FILES['edit_customFile']['name'], null, @file_get_contents($_FILES['edit_customFile']['tmp_name'])); // almacena array de archivos   
 
 if ($confir_insert == 1)
 {
@@ -100,11 +101,65 @@ if ($confir_insert == 1)
 /* Fin se obtienen el ultimo registro correspondiente a la key */
 
 
+
+
+
+
+
+
+
+
+/* Inicio subir archivo */
+
+        $upload_dir   = wp_upload_dir();
+
+        if ( ! empty( $upload_dir['basedir'] ) ) 
+        {
+            $user_dirname = $upload_dir['basedir'].'/'.date('Y').'/'.date('m').'/'.date('d').'/'; // Ruta de directorios donde se almacenara archivos
+
+            if ( ! file_exists( $user_dirname ) ) 
+            {
+                wp_mkdir_p( $user_dirname ); // Crear directorios para almacenar archivos 
+            }
+
+            if ($_FILES['edit_customFile']['name'] != NULL)
+            {
+                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a",time())."_";
+                $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/'; // ruta de directorio para linux
+                $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\'; // ruta de directorio para windows
+                $dir_file = $date_time.$_FILES['edit_customFile']['name'];
+                $file_name = $user_dirname.$date_time.''.$_FILES['edit_customFile']['name'];
+                rename($edit_customFile['file'] , $file_name); // mueve archivos a carpeta creada 
+            }
+        }
+
+echo '=============================================================================================</br>'; 
+echo '=>' .$upload_dir. '</br>'; 
+echo '=>' .$upload_dir['basedir']. '</br>'; 
+echo '=>' .$user_dirname. '</br>'; 
+echo '=>' .$_FILES['edit_customFile']['name']. '</br>'; 
+echo '=>' .$dir_file_linux. '</br>'; 
+echo '=>' .$dir_file_win. '</br>'; 
+echo '=>' .$dir_file. '</br>'; 
+echo '=>' .$file_name . '</br>'; 
+
+
+/* Fin subir archivo */
+
+
+
+
+
+
+
+
+
   /* Inicio desactiva los documentos de la base de datos */
   $wpdb->update( $tabla_crud, 
     array( 
       'nint' => $edit_nint,
       'date' => $edit_date,
+      'dir_file' => $dir_file,
       'status_id' => '1'
     ),
     array( 
@@ -112,6 +167,24 @@ if ($confir_insert == 1)
     )
   );
   /* Fin desactiva los documentos de la base de datos */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
