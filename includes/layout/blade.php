@@ -125,7 +125,7 @@ function form_edit()
 /*Variables globales*/
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // nombre de la tabla de sistema
+global $sist_name;           // nombre de la tabla de sistema
 global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
@@ -139,7 +139,7 @@ global $global_data;
 
 
 
-$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+$tabla_crud = $wpdb->prefix . $sist_name; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']); // Datos obtenidos desde frontend_update.php id
 $key_id  = sanitize_text_field($_GET['key_id']); // Datos obtenidos desde frontend_update.php key_id
 
