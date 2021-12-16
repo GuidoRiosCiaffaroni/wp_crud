@@ -6,7 +6,8 @@ function wpdb_install()
 global $wpdb;               // datos del sistema
 global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // nombre de la tabla de sistema
+global $sist_name;           // nombre de la tabla de sistema
+
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
@@ -15,7 +16,7 @@ global $dir_file;           // Nombre de archivo a subir
 global $file_name;  
  
 
-    $table_name = $wpdb->prefix . $sistname; 
+    $table_name = $wpdb->prefix . $sist_name; 
 
     // QUERY 
     $sql = "CREATE TABLE " . $table_name . " (

@@ -21,7 +21,7 @@ function Kfp_Delete_form()
 global $wpdb;               // datos del sistema
 global $wp_session;         // Inicio sesion variables
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // nombre de la tabla de sistema
+global $sist_name;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
@@ -30,7 +30,7 @@ global $dir_file;           // Nombre de archivo a subir
 global $file_name;  
  
 
-$tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+$tabla_crud = $wpdb->prefix . $sist_name; // objeto base de datos
 
 $id      = sanitize_text_field($_GET['id']);
 $key_id  = sanitize_text_field($_GET['key_id']);

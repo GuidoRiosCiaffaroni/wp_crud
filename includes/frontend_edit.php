@@ -19,7 +19,7 @@ function Kfp_Edit_form()
 /*Variables globales*/
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // nombre de la tabla de sistema
+global $sist_name;           // nombre de la tabla de sistema
 global $tabla_crud;           // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
@@ -47,7 +47,7 @@ $edit_customFile     = wp_upload_bits( $_FILES['edit_customFile']['name'], null,
 
 if ($confir_insert == 1) // confirma que los datos sean obtenidos desde el blade 
 {
-  $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
+  $tabla_crud = $wpdb->prefix . $sist_name; // objeto base de datos
 
   $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
   $registros = $wpdb->get_results($query);
@@ -128,17 +128,7 @@ if ($confir_insert == 1) // confirma que los datos sean obtenidos desde el blade
         }
   /*Fin subir archivo*/
 
-/*
-echo '=============================================================================================</br>'; 
-echo '=>' .$upload_dir. '</br>'; 
-echo '=>' .$upload_dir['basedir']. '</br>'; 
-echo '=>' .$user_dirname. '</br>'; 
-echo '=>' .$_FILES['edit_customFile']['name']. '</br>'; 
-echo '=>' .$dir_file_linux. '</br>'; 
-echo '=>' .$dir_file_win. '</br>'; 
-echo '=>' .$dir_file. '</br>'; 
-echo '=>' .$file_name . '</br>'; 
-*/
+
 
 /* Fin subir archivo */
 

@@ -51,7 +51,7 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 /*Variables globales*/
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // Nombre de la tabla de General del sistema 
+global $sist_name;           // Nombre de la tabla de General del sistema 
 global $tabla_crud;         // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
@@ -66,7 +66,7 @@ global $global_data;
 
 
 $wpbc_db_version = '1.1.0'; 
-$sistname = 'crud'; 
+$sist_name = 'crud'; 
 $user_id = get_current_user_id();
 
 /* Instalacion de Base de datos */
