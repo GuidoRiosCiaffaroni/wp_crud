@@ -137,8 +137,6 @@ global $file_name;
 global $wp_session;         // Inicio sesion variables
 global $global_data;
 
-
-
 $tabla_crud = $wpdb->prefix . $sist_name; // objeto base de datos
 $id      = sanitize_text_field($_GET['id']); // Datos obtenidos desde frontend_update.php id
 $key_id  = sanitize_text_field($_GET['key_id']); // Datos obtenidos desde frontend_update.php key_id
@@ -160,7 +158,6 @@ $registros = $wpdb->get_results($query);
     $status_id = $registros->status_id;
     $create_at = $registros->create_at;  
   }
-
 
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_insert" class="cuestionario" enctype="multipart/form-data">';
         wp_nonce_field('graba_insert', 'insert_nonce');
