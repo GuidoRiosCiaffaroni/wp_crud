@@ -91,6 +91,7 @@ global $global_data;
    $wpdb->insert($tabla_crud,$global_data);
 
 
+echo "---------------------------->".$global_data."</br>";
 
 
 form_insert(); // Formulario Blade 

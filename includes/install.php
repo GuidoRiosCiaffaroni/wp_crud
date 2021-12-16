@@ -21,9 +21,9 @@ global $global_data;
 
 
     $table_name_file = $wpdb->prefix . $sist_name_file; 
-    $table_name_departament = $wpdb->prefix . $sist_name_departament;
+    //$table_name_departament = $wpdb->prefix . $sist_name_departament;
 
-
+/*
     $sql_file = "CREATE TABLE " . $table_name_file . " (
         id int(11) NOT NULL AUTO_INCREMENT,
         user_id VARCHAR (100) NOT NULL,
@@ -41,8 +41,30 @@ global $global_data;
         PRIMARY KEY (id),
         FOREIGN KEY (id_departament) REFERENCES ".$table_name_departament." (id)  
     );";
-    
+*/
 
+
+
+    $sql_file = "CREATE TABLE " . $table_name_file . " (
+        id int(11) NOT NULL AUTO_INCREMENT,
+        user_id VARCHAR (100) NOT NULL,
+        key_id VARCHAR (100) NOT NULL,
+        nint VARCHAR (100) NOT NULL,
+        description VARCHAR (100) NOT NULL,
+        coment_status VARCHAR (100) NOT NULL,
+        id_departament int(11) NOT NULL,
+        date VARCHAR (100) NOT NULL, 
+        dir_file_linux VARCHAR (100) NOT NULL,
+        dir_file_win VARCHAR (100) NOT NULL,
+        dir_file VARCHAR (100) NOT NULL, 
+        status_id VARCHAR (100) NOT NULL,
+        create_at datetime NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (id)
+    );";
+
+
+    
+/*
      
     $sql_departament = "CREATE TABLE " . $table_name_departament . " (
         id int(11) NOT NULL AUTO_INCREMENT,
@@ -53,9 +75,10 @@ global $global_data;
         create_at datetime NOT NULL DEFAULT NOW(),
         PRIMARY KEY  (id)
     );";
+    */
 
     dbDelta($sql_file); 
-    dbDelta($sql_departament); 
+    //dbDelta($sql_departament); 
 
 
 
