@@ -33,7 +33,7 @@ global $global_data;
 
 
 
-/*datos Obtenidos desde blade*/
+/*Inicio datos Obtenidos desde blade*/
 $id                  = sanitize_text_field($_POST['edit_id']);
 $edit_key_id         = sanitize_text_field($_POST['edit_key_id']);
 $confir_insert       = sanitize_text_field($_POST['confir_insert']); // confirma que los datos sean obtenidos desdes el blade y no desde otro lugar
@@ -41,6 +41,9 @@ $confir_insert       = sanitize_text_field($_POST['confir_insert']); // confirma
 $edit_nint           = sanitize_text_field($_POST['edit_nint']);  
 $edit_date           = sanitize_text_field($_POST['edit_date']);
 $edit_customFile     = wp_upload_bits( $_FILES['edit_customFile']['name'], null, @file_get_contents($_FILES['edit_customFile']['tmp_name'])); // almacena array de archivos   
+/*Fin datos obtenidos desde el blade*/
+
+
 
 if ($confir_insert == 1) // confirma que los datos sean obtenidos desde el blade 
 {
@@ -123,6 +126,7 @@ if ($confir_insert == 1) // confirma que los datos sean obtenidos desde el blade
                 rename($edit_customFile['file'] , $file_name); // mueve archivos a carpeta creada 
             }
         }
+  /*Fin subir archivo*/
 
 /*
 echo '=============================================================================================</br>'; 
@@ -154,31 +158,11 @@ echo '=>' .$file_name . '</br>';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
 
 
 form_edit();
 //add_action('init', 'form_edit');
-
 
 
 }

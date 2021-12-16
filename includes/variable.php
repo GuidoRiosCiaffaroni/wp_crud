@@ -5,6 +5,20 @@ add_shortcode('ShortCode_global_variable', 'global_variable');
 
 function global_variable() 
 {
+/*
+echo '=============================================================================================</br>'; 
+echo '=>' .$upload_dir. '</br>'; 
+echo '=>' .$upload_dir['basedir']. '</br>'; 
+echo '=>' .$user_dirname. '</br>'; 
+echo '=>' .$_FILES['edit_customFile']['name']. '</br>'; 
+echo '=>' .$dir_file_linux. '</br>'; 
+echo '=>' .$dir_file_win. '</br>'; 
+echo '=>' .$dir_file. '</br>'; 
+echo '=>' .$file_name . '</br>'; 
+*/
+
+
+
 
 /*
 echo '$ user_id =>'.$user_id.'</br>';

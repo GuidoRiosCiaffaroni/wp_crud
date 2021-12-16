@@ -22,7 +22,7 @@ global $global_data;
 
  
     echo '<form action="'. get_the_permalink() .'" method="post" id="form_aspirante" class="cuestionario" enctype="multipart/form-data">';
-        wp_nonce_field('graba_aspirante', 'aspirante_nonce');
+        wp_nonce_field('graba_insert', 'insert_nonce');
 
 
         datetimepicker_header(); // require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
@@ -140,8 +140,8 @@ global $global_data;
 
 
 $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
-$id      = sanitize_text_field($_GET['id']);
-$key_id  = sanitize_text_field($_GET['key_id']);
+$id      = sanitize_text_field($_GET['id']); // Datos obtenidos desde frontend_update.php id
+$key_id  = sanitize_text_field($_GET['key_id']); // Datos obtenidos desde frontend_update.php key_id
 
 $query = 'SELECT * FROM '.$tabla_crud.' WHERE id = '.$id;
 $registros = $wpdb->get_results($query);
@@ -170,7 +170,9 @@ $registros = $wpdb->get_results($query);
 
 
 /* ************************************************************************************* */
-// 
+// Registro de datos 
+// Datos obtenidos desde el // Datos obtenidos desde frontend_update.php id
+//
 
 echo '
     <input id="confir_insert" name="edit_id" type="hidden"  value="'.$id.'" >

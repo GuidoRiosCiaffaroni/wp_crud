@@ -52,7 +52,7 @@ global $global_data;
     if (get_current_user_id() != NULL ) 
     {
 
-        $current_user = wp_get_current_user();
+        $current_user = wp_get_current_user(); // Obtiene la ide del usuario actual 
         $upload_dir   = wp_upload_dir();
 
         if ( isset( $current_user->user_login ) && ! empty( $upload_dir['basedir'] ) ) 
