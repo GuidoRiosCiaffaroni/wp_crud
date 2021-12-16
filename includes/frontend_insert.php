@@ -15,24 +15,24 @@ function Kfp_Insert_form()
 {
 
 /*Variables globales*/
-global $wpdb;               // datos del sistema
-global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sist_name;           // nombre de la tabla de sistema
-global $tabla_crud;         // nombre de la tabla de sistema
-global $user_id;            // ID del usuario
-global $status_user;        // Perfil del usuario 
+global $wpdb;                   // datos del sistema
+global $wpbc_db_version;        // Version del base de datos - utilizado para las actualizaciones
+global $sist_name_file;         // Nombre de la tabla de General del sistema 
+global $sist_name_departament;  // Nombre de la tabla de Depart 
+global $tabla_crud;             // nombre de la tabla de sistema
+global $user_id;                // ID del usuario
+global $status_user;            // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;           // Nombre de archivo a subir
-global $global_data;        // Almacenamiento de datos Globales
+global $dir_file;               // Nombre de archivo a subir
+global $global_data;            // Almacenamiento de datos Globales
 global $file_name;  
-global $wp_session;         // Inicio sesion variables
+global $wp_session;             // Inicio sesion variables
 global $global_data;
 
+    $tabla_crud = $wpdb->prefix . $sist_name_file; // objeto base de datos
 
-
-    $tabla_crud = $wpdb->prefix . $sist_name; // objeto base de datos
-
+    echo '-------------------------------------------------------------------------->'.$tabla_crud.'</br>';
     /*Incio almacena informacion de formulario BLADE*/
     $user_id        = sanitize_text_field($_POST['user_id']);   // obtiene el id del usuario 
     $key_id         = wp_generate_password( 12, false );        // genera una key para un registro

@@ -16,18 +16,24 @@ function Kfp_Update_form()
 {
 
 /*Variables globales*/
-global $wpdb;             // datos del sistema
-global $wp_session;     // Inicio sesion variables
-global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sist_name;         // nombre de la tabla de sistema
-global $user_id;          // ID del usuario
-global $status_user;      // Perfil del usuario 
+global $wpdb;                   // datos del sistema
+global $wpbc_db_version;        // Version del base de datos - utilizado para las actualizaciones
+global $sist_name_file;         // Nombre de la tabla de General del sistema 
+global $sist_name_departament;  // Nombre de la tabla de Depart 
+global $tabla_crud;             // nombre de la tabla de sistema
+global $user_id;                // ID del usuario
+global $status_user;            // Perfil del usuario 
 global $user_dirname;
 global $upload_dir;
-global $dir_file;         // Nombre de archivo a subir
+global $dir_file;               // Nombre de archivo a subir
+global $global_data;            // Almacenamiento de datos Globales
 global $file_name;  
+global $wp_session;             // Inicio sesion variables
+global $global_data;
 
-$query = 'SELECT * FROM wp_crud WHERE status_id = 1 ';
+
+$table_name_file = $wpdb->prefix . $sist_name_file;
+$query = 'SELECT * FROM '.$table_name_file.' WHERE status_id = 1 ';
 $registros = $wpdb->get_results($query);
 $path_uploads = wp_get_upload_dir();
 $path_plugins = plugins_url();
