@@ -2,7 +2,7 @@
 /**
 * Plugin Name: WP CRUD
 * Description: Ejemplo Basico 
-* Version:     1.2
+* Version:     1.3
 * Plugin URI: https://guidorios.cl/wp-basic-crud-plugin-wordpress/
 * Author:      Guido Rios Ciaffaroni
 * Author URI:  https://guidorios.cl/
@@ -32,7 +32,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_update.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_delete.php';
 // Formuario de acceso en frontend
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_edit.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_edit_2.php';
 // Funciones para grafica de Fecha y Hora 
 require_once plugin_dir_path( __FILE__ ) . 'includes/content/datetimepicker.php';
 // Funciones de seguridad 
@@ -52,8 +51,8 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 /*Variables globales*/
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
-global $sistname;           // nombre de la tabla de sistema
-global $tabla_crud;           // nombre de la tabla de sistema
+global $sistname;           // Nombre de la tabla de General del sistema 
+global $tabla_crud;         // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
@@ -65,10 +64,6 @@ global $wp_session;         // Inicio sesion variables
 global $global_data;
 
 
-/*
-$wp_session['loggedIn'] = 15;
-echo $wp_session['loggedIn'];
-*/
 
 $wpbc_db_version = '1.1.0'; 
 $sistname = 'crud'; 

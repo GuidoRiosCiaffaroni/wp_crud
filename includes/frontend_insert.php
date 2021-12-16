@@ -11,7 +11,6 @@ add_shortcode('kfp_ShortCode_Insert_form', 'Kfp_Insert_form');
 /*Fin crear shortcode enla pagina de inicio*/ 
 
 /*Inicio funcion para crear shortcode en la pagina de inicio */
-
 function Kfp_Insert_form() 
 {
 
@@ -19,7 +18,7 @@ function Kfp_Insert_form()
 global $wpdb;               // datos del sistema
 global $wpbc_db_version;    // Version del base de datos - utilizado para las actualizaciones
 global $sistname;           // nombre de la tabla de sistema
-global $tabla_crud;           // nombre de la tabla de sistema
+global $tabla_crud;         // nombre de la tabla de sistema
 global $user_id;            // ID del usuario
 global $status_user;        // Perfil del usuario 
 global $user_dirname;
@@ -35,12 +34,12 @@ global $global_data;
     $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
     /*Incio almacena informacion de formulario BLADE*/
-    $user_id        = sanitize_text_field($_POST['user_id']);
-    $key_id         = wp_generate_password( 12, false );
-    $nint           = sanitize_text_field($_POST['nint']);
-    $date           = sanitize_text_field($_POST['date']);
+    $user_id        = sanitize_text_field($_POST['user_id']);   // obtiene el id del usuario 
+    $key_id         = wp_generate_password( 12, false );        // genera una key para un registro
+    $nint           = sanitize_text_field($_POST['nint']);      // Obtiene un dato desde el formulario 
+    $date           = sanitize_text_field($_POST['date']);      // Obtiene una fecha desde el formualario
     $customFile     = wp_upload_bits( $_FILES['customFile']['name'], null, @file_get_contents($_FILES['customFile']['tmp_name'])); // almacena array de archivos 
-    $status_id      = '1';
+    $status_id      = '1'; // Obtiene el estatus del registro activo = 1 / desactivado = 0
 
     /* ** carga de informacion en variables globales ** */
     $form_key_id = $key_id ;
@@ -67,12 +66,12 @@ global $global_data;
 
             if ($_FILES['customFile']['name'] != NULL)
             {
-                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a",time())."_";
-                $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/'; // ruta de directorio para linux
-                $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\'; // ruta de directorio para windows
-                $dir_file = $date_time.$_FILES['customFile']['name'];
-                $file_name = $user_dirname.$date_time.''.$_FILES['customFile']['name'];
-                rename($customFile['file'] , $file_name); // mueve archivos a carpeta creada 
+                $date_time = date('Y')."_".date('m')."_".date('d')."_".date("h_i_s_a",time())."_";  // almacena una variable con la fecha formateada
+                $dir_file_linux = '/'.date('Y').'/'.date('m').'/'.date('d').'/';                    // ruta de directorio para linux
+                $dir_file_win = '\\'.date('Y').'\\'.date('m').'\\'.date('d').'\\';                  // ruta de directorio para windows
+                $dir_file = $date_time.$_FILES['customFile']['name'];                               // almacena una variable con el nombre del docuemto 
+                $file_name = $user_dirname.$date_time.''.$_FILES['customFile']['name'];             //alamacena una variable con el nombre del documetno y su fecha 
+                rename($customFile['file'] , $file_name);                                           // mueve archivos a carpeta creada 
             }
         }
     }

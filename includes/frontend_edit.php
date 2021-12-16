@@ -34,16 +34,15 @@ global $global_data;
 
 
 /*datos Obtenidos desde blade*/
-
 $id                  = sanitize_text_field($_POST['edit_id']);
 $edit_key_id         = sanitize_text_field($_POST['edit_key_id']);
-$confir_insert       = sanitize_text_field($_POST['confir_insert']);
+$confir_insert       = sanitize_text_field($_POST['confir_insert']); // confirma que los datos sean obtenidos desdes el blade y no desde otro lugar
 
 $edit_nint           = sanitize_text_field($_POST['edit_nint']);  
 $edit_date           = sanitize_text_field($_POST['edit_date']);
 $edit_customFile     = wp_upload_bits( $_FILES['edit_customFile']['name'], null, @file_get_contents($_FILES['edit_customFile']['tmp_name'])); // almacena array de archivos   
 
-if ($confir_insert == 1)
+if ($confir_insert == 1) // confirma que los datos sean obtenidos desde el blade 
 {
   $tabla_crud = $wpdb->prefix . $sistname; // objeto base de datos
 
@@ -98,15 +97,7 @@ if ($confir_insert == 1)
   {
     $last_id = $last->id;
   }
-/* Fin se obtienen el ultimo registro correspondiente a la key */
-
-
-
-
-
-
-
-
+  /* Fin se obtienen el ultimo registro correspondiente a la key */
 
 
 /* Inicio subir archivo */
@@ -133,6 +124,7 @@ if ($confir_insert == 1)
             }
         }
 
+/*
 echo '=============================================================================================</br>'; 
 echo '=>' .$upload_dir. '</br>'; 
 echo '=>' .$upload_dir['basedir']. '</br>'; 
@@ -142,19 +134,11 @@ echo '=>' .$dir_file_linux. '</br>';
 echo '=>' .$dir_file_win. '</br>'; 
 echo '=>' .$dir_file. '</br>'; 
 echo '=>' .$file_name . '</br>'; 
-
+*/
 
 /* Fin subir archivo */
 
-
-
-
-
-
-
-
-
-  /* Inicio desactiva los documentos de la base de datos */
+  /* Inicio cambia datos en registro duplicado los documentos de la base de datos */
   $wpdb->update( $tabla_crud, 
     array( 
       'nint' => $edit_nint,
@@ -166,7 +150,7 @@ echo '=>' .$file_name . '</br>';
       'id' => $last_id
     )
   );
-  /* Fin desactiva los documentos de la base de datos */
+  /* Fin cambia datos en registro duplicado los documentos de la base de datos */
 
 
 
