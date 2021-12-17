@@ -21,7 +21,7 @@ global $global_data;
 
 
     $table_name_file = $wpdb->prefix . $sist_name_file; 
-    //$table_name_departament = $wpdb->prefix . $sist_name_departament;
+    $table_name_departament = $wpdb->prefix . $sist_name_departament;
 
 /*
     $sql_file = "CREATE TABLE " . $table_name_file . " (
@@ -61,13 +61,10 @@ global $global_data;
         create_at datetime NOT NULL DEFAULT NOW(),
         PRIMARY KEY (id)
     );";
-
-
-    
-/*
-     
+ 
     $sql_departament = "CREATE TABLE " . $table_name_departament . " (
         id int(11) NOT NULL AUTO_INCREMENT,
+        user_id VARCHAR (100) NOT NULL,
         name VARCHAR (100),
         description VARCHAR (100) NOT NULL,
         coment_status VARCHAR (100) NOT NULL,
@@ -75,10 +72,15 @@ global $global_data;
         create_at datetime NOT NULL DEFAULT NOW(),
         PRIMARY KEY  (id)
     );";
-    */
+
+
+    $sql_departament_default = "INSERT INTO " . $table_name_departament . " (user_id, name, description, coment_status, status_id, create_at) VALUES('0', 'Sin Departamento', 'Sin Departamento', '', '', CURRENT_TIMESTAMP);";
+
+    
 
     dbDelta($sql_file); 
-    //dbDelta($sql_departament); 
+    dbDelta($sql_departament);
+    dbDelta($sql_departament_default);  
 
 
 
