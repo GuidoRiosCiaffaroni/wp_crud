@@ -14,21 +14,21 @@ add_shortcode('kfp_ShortCode_Insert_form', 'Kfp_Insert_form');
 function Kfp_Insert_form() 
 {
 
-/*Variables globales*/
-global $wpdb;                   // datos del sistema
-global $wpbc_db_version;        // Version del base de datos - utilizado para las actualizaciones
-global $sist_name_file;         // Nombre de la tabla de General del sistema 
-global $sist_name_departament;  // Nombre de la tabla de Depart 
-global $tabla_crud;             // nombre de la tabla de sistema
-global $user_id;                // ID del usuario
-global $status_user;            // Perfil del usuario 
-global $user_dirname;
-global $upload_dir;
-global $dir_file;               // Nombre de archivo a subir
-global $global_data;            // Almacenamiento de datos Globales
-global $file_name;  
-global $wp_session;             // Inicio sesion variables
-global $global_data;
+    /*Variables globales*/
+    global $wpdb;                   // datos del sistema
+    global $wpbc_db_version;        // Version del base de datos - utilizado para las actualizaciones
+    global $sist_name_file;         // Nombre de la tabla de General del sistema 
+    global $sist_name_departament;  // Nombre de la tabla de Depart 
+    global $tabla_crud;             // nombre de la tabla de sistema
+    global $user_id;                // ID del usuario
+    global $status_user;            // Perfil del usuario 
+    global $user_dirname;
+    global $upload_dir;
+    global $dir_file;               // Nombre de archivo a subir
+    global $global_data;            // Almacenamiento de datos Globales
+    global $file_name;  
+    global $wp_session;             // Inicio sesion variables
+    global $global_data;
 
     $tabla_crud = $wpdb->prefix . $sist_name_file; // objeto base de datos
 
@@ -88,15 +88,13 @@ global $global_data;
                 'status_id'         => $status_id,
             );
 
-   $wpdb->insert($tabla_crud,$global_data);
+    $wpdb->insert($tabla_crud,$global_data);
 
 
-echo "---------------------------->".$global_data."</br>";
+    echo "---------------------------->".$global_data."</br>";
 
 
-form_insert(); // Formulario Blade 
-
-
+    form_insert(); // Formulario Blade 
 
 
 }

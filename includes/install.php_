@@ -76,17 +76,10 @@ global $global_data;
 
     $sql_departament_default = "INSERT INTO " . $table_name_departament . " (user_id, name, description, coment_status, status_id, create_at) VALUES('0', 'Sin Departamento', 'Sin Departamento', '', '', CURRENT_TIMESTAMP);";
 
-    
-
     dbDelta($sql_file); 
     dbDelta($sql_departament);
     dbDelta($sql_departament_default);  
 
-
-
-
-
-    
 
 }
 

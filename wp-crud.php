@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 /*Importa funciones de instalacion*/
 require_once plugin_dir_path( __FILE__ ) . 'includes/variable.php';
 // Instalacion del Sistema Base de datos
-require_once plugin_dir_path( __FILE__ ) . 'includes/install.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/install/install.php';
 // Formuario de acceso en frontend
 require_once plugin_dir_path( __FILE__ ) . 'includes/frontend_insert.php';
 // Formuario de acceso en frontend
@@ -74,7 +74,9 @@ $user_id = get_current_user_id();
 
 /* Instalacion de Base de datos */
 wpdb_install();
+wpdb_seed();
 register_activation_hook(__FILE__, 'wpdb_install');
+register_activation_hook(__FILE__, 'wpdb_seed');
 
 /*Inicio crear shortcode en la pagina de inicio */
 //add_shortcode('kfp_ShotCondeInsert_form', 'Kfp_Insert_form');
